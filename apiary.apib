@@ -1,0 +1,944 @@
+FORMAT: 1A
+HOST: https://courses-api.alpha.org
+
+# Courses (v3)
+
+An API for interacting with courses, along with their session, venues and organisations among other utility resources.
+
+## Authentication
+
+You will need to use a user's access token when making requests to any non-public endpoint. The user's ID will be saved against courses, venues and organisations. So make sure you are using the correct user token!
+
+Make sure they have the *ACS* permission if they are an NAO or Admin making changes to utility resources.
+
+## Utilities
+
+There are several utility resources these allow us to use consistent UUIDs in the database, but still allow for localisation by NAOs.
+
+It also allows all first or third party systems to gain access to a list of parameters to use when creating a course along with their localised strings to use.
+
+
+# Group Public
+
+## Denominations [/3/public/utilities/{locale}/denominations]
+
+Fetch a list of denominations for a locale
+
+### Publicly list all denominations for a locale [GET]
+
++ Parameters
+    + locale (required, string, `en`) ... Locale of denominations to list
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"denominations":{"anglican":"Anglican"}}
+
+## Languages [/3/public/utilities/{locale}/languages]
+
+Fetch a list of languages for a locale
+
+### Publicly list all languages for a locale [GET]
+
++ Parameters
+    + locale (required, string, `en`) ... Locale of languages to list
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"languages":{"en":"English","fr":"French"}}
+
+## Organisation Types [/3/public/utilities/{locale}/organisation-types]
+
+Fetch a list of organisation types for a locale
+
+### Publicly list all organisation types for a locale [GET]
+
++ Parameters
+    + locale (required, string, `en`) ... Locale of organisation types to list
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"organisationTypes":{"workplace":"Workplace"}}
+
+## Timezones [/3/public/utilities/{locale}/timezones/{countryCode}]
+
+Fetch a list timezones for a country
+
+### Publicly list all timezones types for a locale and country code [GET]
+
++ Parameters
+    + locale (required, string, `en`) ... Locale of timezones to list
+    + countryCode (required, string, `GB`) ... Country code to filter timezones
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"timezones":{"Africa":{"Africa\/Abidjan":"Abidjan","Africa\/Accra":"Accra","Africa\/Addis_Ababa":"Addis Ababa","Africa\/Algiers":"Algiers","Africa\/Asmara":"Asmara","Africa\/Bamako":"Bamako","Africa\/Bangui":"Bangui","Africa\/Banjul":"Banjul","Africa\/Bissau":"Bissau","Africa\/Blantyre":"Blantyre","Africa\/Brazzaville":"Brazzaville","Africa\/Bujumbura":"Bujumbura","Africa\/Cairo":"Cairo","Africa\/Casablanca":"Casablanca","Africa\/Ceuta":"Ceuta","Africa\/Conakry":"Conakry","Africa\/Dakar":"Dakar","Africa\/Dar_es_Salaam":"Dar es Salaam","Africa\/Djibouti":"Djibouti","Africa\/Douala":"Douala","Africa\/El_Aaiun":"El Aaiun","Africa\/Freetown":"Freetown","Africa\/Gaborone":"Gaborone","Africa\/Harare":"Harare","Africa\/Johannesburg":"Johannesburg","Africa\/Juba":"Juba","Africa\/Kampala":"Kampala","Africa\/Khartoum":"Khartoum","Africa\/Kigali":"Kigali","Africa\/Kinshasa":"Kinshasa","Africa\/Lagos":"Lagos","Africa\/Libreville":"Libreville","Africa\/Lome":"Lome","Africa\/Luanda":"Luanda","Africa\/Lubumbashi":"Lubumbashi","Africa\/Lusaka":"Lusaka","Africa\/Malabo":"Malabo","Africa\/Maputo":"Maputo","Africa\/Maseru":"Maseru","Africa\/Mbabane":"Mbabane","Africa\/Mogadishu":"Mogadishu","Africa\/Monrovia":"Monrovia","Africa\/Nairobi":"Nairobi","Africa\/Ndjamena":"Ndjamena","Africa\/Niamey":"Niamey","Africa\/Nouakchott":"Nouakchott","Africa\/Ouagadougou":"Ouagadougou","Africa\/Porto-Novo":"Porto-Novo","Africa\/Sao_Tome":"Sao Tome","Africa\/Tripoli":"Tripoli","Africa\/Tunis":"Tunis","Africa\/Windhoek":"Windhoek"},"America":{"America\/Adak":"Adak","America\/Anchorage":"Anchorage","America\/Anguilla":"Anguilla","America\/Antigua":"Antigua","America\/Araguaina":"Araguaina","America\/Argentina\/Buenos_Aires":"Argentina - Buenos Aires","America\/Argentina\/Catamarca":"Argentina - Catamarca","America\/Argentina\/Cordoba":"Argentina - Cordoba","America\/Argentina\/Jujuy":"Argentina - Jujuy","America\/Argentina\/La_Rioja":"Argentina - La Rioja","America\/Argentina\/Mendoza":"Argentina - Mendoza","America\/Argentina\/Rio_Gallegos":"Argentina - Rio Gallegos","America\/Argentina\/Salta":"Argentina - Salta","America\/Argentina\/San_Juan":"Argentina - San Juan","America\/Argentina\/San_Luis":"Argentina - San Luis","America\/Argentina\/Tucuman":"Argentina - Tucuman","America\/Argentina\/Ushuaia":"Argentina - Ushuaia","America\/Aruba":"Aruba","America\/Asuncion":"Asuncion","America\/Atikokan":"Atikokan","America\/Bahia":"Bahia","America\/Bahia_Banderas":"Bahia Banderas","America\/Barbados":"Barbados","America\/Belem":"Belem","America\/Belize":"Belize","America\/Blanc-Sablon":"Blanc-Sablon","America\/Boa_Vista":"Boa Vista","America\/Bogota":"Bogota","America\/Boise":"Boise","America\/Cambridge_Bay":"Cambridge Bay","America\/Campo_Grande":"Campo Grande","America\/Cancun":"Cancun","America\/Caracas":"Caracas","America\/Cayenne":"Cayenne","America\/Cayman":"Cayman","America\/Chicago":"Chicago","America\/Chihuahua":"Chihuahua","America\/Costa_Rica":"Costa Rica","America\/Creston":"Creston","America\/Cuiaba":"Cuiaba","America\/Curacao":"Curacao","America\/Danmarkshavn":"Danmarkshavn","America\/Dawson":"Dawson","America\/Dawson_Creek":"Dawson Creek","America\/Denver":"Denver","America\/Detroit":"Detroit","America\/Dominica":"Dominica","America\/Edmonton":"Edmonton","America\/Eirunepe":"Eirunepe","America\/El_Salvador":"El Salvador","America\/Fortaleza":"Fortaleza","America\/Glace_Bay":"Glace Bay","America\/Godthab":"Godthab","America\/Goose_Bay":"Goose Bay","America\/Grand_Turk":"Grand Turk","America\/Grenada":"Grenada","America\/Guadeloupe":"Guadeloupe","America\/Guatemala":"Guatemala","America\/Guayaquil":"Guayaquil","America\/Guyana":"Guyana","America\/Halifax":"Halifax","America\/Havana":"Havana","America\/Hermosillo":"Hermosillo","America\/Indiana\/Indianapolis":"Indiana - Indianapolis","America\/Indiana\/Knox":"Indiana - Knox","America\/Indiana\/Marengo":"Indiana - Marengo","America\/Indiana\/Petersburg":"Indiana - Petersburg","America\/Indiana\/Tell_City":"Indiana - Tell City","America\/Indiana\/Vevay":"Indiana - Vevay","America\/Indiana\/Vincennes":"Indiana - Vincennes","America\/Indiana\/Winamac":"Indiana - Winamac","America\/Inuvik":"Inuvik","America\/Iqaluit":"Iqaluit","America\/Jamaica":"Jamaica","America\/Juneau":"Juneau","America\/Kentucky\/Louisville":"Kentucky - Louisville","America\/Kentucky\/Monticello":"Kentucky - Monticello","America\/Kralendijk":"Kralendijk","America\/La_Paz":"La Paz","America\/Lima":"Lima","America\/Los_Angeles":"Los Angeles","America\/Lower_Princes":"Lower Princes","America\/Maceio":"Maceio","America\/Managua":"Managua","America\/Manaus":"Manaus","America\/Marigot":"Marigot","America\/Martinique":"Martinique","America\/Matamoros":"Matamoros","America\/Mazatlan":"Mazatlan","America\/Menominee":"Menominee","America\/Merida":"Merida","America\/Metlakatla":"Metlakatla","America\/Mexico_City":"Mexico City","America\/Miquelon":"Miquelon","America\/Moncton":"Moncton","America\/Monterrey":"Monterrey","America\/Montevideo":"Montevideo","America\/Montserrat":"Montserrat","America\/Nassau":"Nassau","America\/New_York":"New York","America\/Nipigon":"Nipigon","America\/Nome":"Nome","America\/Noronha":"Noronha","America\/North_Dakota\/Beulah":"North Dakota - Beulah","America\/North_Dakota\/Center":"North Dakota - Center","America\/North_Dakota\/New_Salem":"North Dakota - New Salem","America\/Ojinaga":"Ojinaga","America\/Panama":"Panama","America\/Pangnirtung":"Pangnirtung","America\/Paramaribo":"Paramaribo","America\/Phoenix":"Phoenix","America\/Port-au-Prince":"Port-au-Prince","America\/Port_of_Spain":"Port of Spain","America\/Porto_Velho":"Porto Velho","America\/Puerto_Rico":"Puerto Rico","America\/Rainy_River":"Rainy River","America\/Rankin_Inlet":"Rankin Inlet","America\/Recife":"Recife","America\/Regina":"Regina","America\/Resolute":"Resolute","America\/Rio_Branco":"Rio Branco","America\/Santa_Isabel":"Santa Isabel","America\/Santarem":"Santarem","America\/Santiago":"Santiago","America\/Santo_Domingo":"Santo Domingo","America\/Sao_Paulo":"Sao Paulo","America\/Scoresbysund":"Scoresbysund","America\/Sitka":"Sitka","America\/St_Barthelemy":"St Barthelemy","America\/St_Johns":"St Johns","America\/St_Kitts":"St Kitts","America\/St_Lucia":"St Lucia","America\/St_Thomas":"St Thomas","America\/St_Vincent":"St Vincent","America\/Swift_Current":"Swift Current","America\/Tegucigalpa":"Tegucigalpa","America\/Thule":"Thule","America\/Thunder_Bay":"Thunder Bay","America\/Tijuana":"Tijuana","America\/Toronto":"Toronto","America\/Tortola":"Tortola","America\/Vancouver":"Vancouver","America\/Whitehorse":"Whitehorse","America\/Winnipeg":"Winnipeg","America\/Yakutat":"Yakutat","America\/Yellowknife":"Yellowknife"},"Antarctica":{"Antarctica\/Casey":"Casey","Antarctica\/Davis":"Davis","Antarctica\/DumontDUrville":"DumontDUrville","Antarctica\/Macquarie":"Macquarie","Antarctica\/Mawson":"Mawson","Antarctica\/McMurdo":"McMurdo","Antarctica\/Palmer":"Palmer","Antarctica\/Rothera":"Rothera","Antarctica\/Syowa":"Syowa","Antarctica\/Vostok":"Vostok"},"Arctic":{"Arctic\/Longyearbyen":"Longyearbyen"},"Asia":{"Asia\/Aden":"Aden","Asia\/Almaty":"Almaty","Asia\/Amman":"Amman","Asia\/Anadyr":"Anadyr","Asia\/Aqtau":"Aqtau","Asia\/Aqtobe":"Aqtobe","Asia\/Ashgabat":"Ashgabat","Asia\/Baghdad":"Baghdad","Asia\/Bahrain":"Bahrain","Asia\/Baku":"Baku","Asia\/Bangkok":"Bangkok","Asia\/Beirut":"Beirut","Asia\/Bishkek":"Bishkek","Asia\/Brunei":"Brunei","Asia\/Choibalsan":"Choibalsan","Asia\/Chongqing":"Chongqing","Asia\/Colombo":"Colombo","Asia\/Damascus":"Damascus","Asia\/Dhaka":"Dhaka","Asia\/Dili":"Dili","Asia\/Dubai":"Dubai","Asia\/Dushanbe":"Dushanbe","Asia\/Gaza":"Gaza","Asia\/Harbin":"Harbin","Asia\/Hebron":"Hebron","Asia\/Ho_Chi_Minh":"Ho Chi Minh","Asia\/Hong_Kong":"Hong Kong","Asia\/Hovd":"Hovd","Asia\/Irkutsk":"Irkutsk","Asia\/Jakarta":"Jakarta","Asia\/Jayapura":"Jayapura","Asia\/Jerusalem":"Jerusalem","Asia\/Kabul":"Kabul","Asia\/Kamchatka":"Kamchatka","Asia\/Karachi":"Karachi","Asia\/Kashgar":"Kashgar","Asia\/Kathmandu":"Kathmandu","Asia\/Khandyga":"Khandyga","Asia\/Kolkata":"Kolkata","Asia\/Krasnoyarsk":"Krasnoyarsk","Asia\/Kuala_Lumpur":"Kuala Lumpur","Asia\/Kuching":"Kuching","Asia\/Kuwait":"Kuwait","Asia\/Macau":"Macau","Asia\/Magadan":"Magadan","Asia\/Makassar":"Makassar","Asia\/Manila":"Manila","Asia\/Muscat":"Muscat","Asia\/Nicosia":"Nicosia","Asia\/Novokuznetsk":"Novokuznetsk","Asia\/Novosibirsk":"Novosibirsk","Asia\/Omsk":"Omsk","Asia\/Oral":"Oral","Asia\/Phnom_Penh":"Phnom Penh","Asia\/Pontianak":"Pontianak","Asia\/Pyongyang":"Pyongyang","Asia\/Qatar":"Qatar","Asia\/Qyzylorda":"Qyzylorda","Asia\/Rangoon":"Rangoon","Asia\/Riyadh":"Riyadh","Asia\/Sakhalin":"Sakhalin","Asia\/Samarkand":"Samarkand","Asia\/Seoul":"Seoul","Asia\/Shanghai":"Shanghai","Asia\/Singapore":"Singapore","Asia\/Taipei":"Taipei","Asia\/Tashkent":"Tashkent","Asia\/Tbilisi":"Tbilisi","Asia\/Tehran":"Tehran","Asia\/Thimphu":"Thimphu","Asia\/Tokyo":"Tokyo","Asia\/Ulaanbaatar":"Ulaanbaatar","Asia\/Urumqi":"Urumqi","Asia\/Ust-Nera":"Ust-Nera","Asia\/Vientiane":"Vientiane","Asia\/Vladivostok":"Vladivostok","Asia\/Yakutsk":"Yakutsk","Asia\/Yekaterinburg":"Yekaterinburg","Asia\/Yerevan":"Yerevan"},"Atlantic":{"Atlantic\/Azores":"Azores","Atlantic\/Bermuda":"Bermuda","Atlantic\/Canary":"Canary","Atlantic\/Cape_Verde":"Cape Verde","Atlantic\/Faroe":"Faroe","Atlantic\/Madeira":"Madeira","Atlantic\/Reykjavik":"Reykjavik","Atlantic\/South_Georgia":"South Georgia","Atlantic\/St_Helena":"St Helena","Atlantic\/Stanley":"Stanley"},"Australia":{"Australia\/Adelaide":"Adelaide","Australia\/Brisbane":"Brisbane","Australia\/Broken_Hill":"Broken Hill","Australia\/Currie":"Currie","Australia\/Darwin":"Darwin","Australia\/Eucla":"Eucla","Australia\/Hobart":"Hobart","Australia\/Lindeman":"Lindeman","Australia\/Lord_Howe":"Lord Howe","Australia\/Melbourne":"Melbourne","Australia\/Perth":"Perth","Australia\/Sydney":"Sydney"},"Europe":{"Europe\/Amsterdam":"Amsterdam","Europe\/Andorra":"Andorra","Europe\/Athens":"Athens","Europe\/Belgrade":"Belgrade","Europe\/Berlin":"Berlin","Europe\/Bratislava":"Bratislava","Europe\/Brussels":"Brussels","Europe\/Bucharest":"Bucharest","Europe\/Budapest":"Budapest","Europe\/Busingen":"Busingen","Europe\/Chisinau":"Chisinau","Europe\/Copenhagen":"Copenhagen","Europe\/Dublin":"Dublin","Europe\/Gibraltar":"Gibraltar","Europe\/Guernsey":"Guernsey","Europe\/Helsinki":"Helsinki","Europe\/Isle_of_Man":"Isle of Man","Europe\/Istanbul":"Istanbul","Europe\/Jersey":"Jersey","Europe\/Kaliningrad":"Kaliningrad","Europe\/Kiev":"Kiev","Europe\/Lisbon":"Lisbon","Europe\/Ljubljana":"Ljubljana","Europe\/London":"London","Europe\/Luxembourg":"Luxembourg","Europe\/Madrid":"Madrid","Europe\/Malta":"Malta","Europe\/Mariehamn":"Mariehamn","Europe\/Minsk":"Minsk","Europe\/Monaco":"Monaco","Europe\/Moscow":"Moscow","Europe\/Oslo":"Oslo","Europe\/Paris":"Paris","Europe\/Podgorica":"Podgorica","Europe\/Prague":"Prague","Europe\/Riga":"Riga","Europe\/Rome":"Rome","Europe\/Samara":"Samara","Europe\/San_Marino":"San Marino","Europe\/Sarajevo":"Sarajevo","Europe\/Simferopol":"Simferopol","Europe\/Skopje":"Skopje","Europe\/Sofia":"Sofia","Europe\/Stockholm":"Stockholm","Europe\/Tallinn":"Tallinn","Europe\/Tirane":"Tirane","Europe\/Uzhgorod":"Uzhgorod","Europe\/Vaduz":"Vaduz","Europe\/Vatican":"Vatican","Europe\/Vienna":"Vienna","Europe\/Vilnius":"Vilnius","Europe\/Volgograd":"Volgograd","Europe\/Warsaw":"Warsaw","Europe\/Zagreb":"Zagreb","Europe\/Zaporozhye":"Zaporozhye","Europe\/Zurich":"Zurich"},"Indian":{"Indian\/Antananarivo":"Antananarivo","Indian\/Chagos":"Chagos","Indian\/Christmas":"Christmas","Indian\/Cocos":"Cocos","Indian\/Comoro":"Comoro","Indian\/Kerguelen":"Kerguelen","Indian\/Mahe":"Mahe","Indian\/Maldives":"Maldives","Indian\/Mauritius":"Mauritius","Indian\/Mayotte":"Mayotte","Indian\/Reunion":"Reunion"},"Pacific":{"Pacific\/Apia":"Apia","Pacific\/Auckland":"Auckland","Pacific\/Chatham":"Chatham","Pacific\/Chuuk":"Chuuk","Pacific\/Easter":"Easter","Pacific\/Efate":"Efate","Pacific\/Enderbury":"Enderbury","Pacific\/Fakaofo":"Fakaofo","Pacific\/Fiji":"Fiji","Pacific\/Funafuti":"Funafuti","Pacific\/Galapagos":"Galapagos","Pacific\/Gambier":"Gambier","Pacific\/Guadalcanal":"Guadalcanal","Pacific\/Guam":"Guam","Pacific\/Honolulu":"Honolulu","Pacific\/Johnston":"Johnston","Pacific\/Kiritimati":"Kiritimati","Pacific\/Kosrae":"Kosrae","Pacific\/Kwajalein":"Kwajalein","Pacific\/Majuro":"Majuro","Pacific\/Marquesas":"Marquesas","Pacific\/Midway":"Midway","Pacific\/Nauru":"Nauru","Pacific\/Niue":"Niue","Pacific\/Norfolk":"Norfolk","Pacific\/Noumea":"Noumea","Pacific\/Pago_Pago":"Pago Pago","Pacific\/Palau":"Palau","Pacific\/Pitcairn":"Pitcairn","Pacific\/Pohnpei":"Pohnpei","Pacific\/Port_Moresby":"Port Moresby","Pacific\/Rarotonga":"Rarotonga","Pacific\/Saipan":"Saipan","Pacific\/Tahiti":"Tahiti","Pacific\/Tarawa":"Tarawa","Pacific\/Tongatapu":"Tongatapu","Pacific\/Wake":"Wake","Pacific\/Wallis":"Wallis"},"Other":{"UTC":"UTC"}}}
+
+# Group Courses
+
+## Courses [/3/courses?all,active,inactive]
+
+Venues store locations where people run Alpha.
+
++ Parameters
+    + all = `false` (optional, boolean, `true`) ... If an administrator with the role *ACS* they can request all courses and not just the ones they own.
+    + active = `true` (optional, boolean, `false`) ... Return active courses, inclusive of start date.
+    + inactive = `false` (optional, boolean, `true`) ... Return inactive courses, exclusive of finish date.
+
+### List all courses [GET]
+
+Venues are automatically filtered to the owner's access token. Administrators with the role *ACS* can request all venues.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"courses":[{"packages":[42,2],"id":12,"name":"My Course","contact":"Jordan de Laune","email":"jordan@cultivate4.com","type":"Alpha","resources":"book,video","start":"2015-04-01T00:00:00+0000","finish":"2015-06-03T00:00:00+0000","published":true,"approved":true,"sessions":[{"title":"Preparation","start":"2015-03-18T00:00:00+0000","type":"preparation","hash":null,"UUID":"P01"},{"title":"Training","start":"2015-03-25T00:00:00+0000","type":"training","hash":null,"UUID":"T01"},{"title":"Training","start":"2015-05-07T00:00:00+0000","type":"training","hash":null,"UUID":"T02"},{"title":"Life: Is This It?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S01"},{"title":"Jesus: Who is He?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S02"},{"title":"Cross: Why Did Jesus Die?","start":"2015-04-08T00:00:00+0000","type":"standard","hash":null,"UUID":"S03"},{"title":"Faith: How Can We have Faith?","start":"2015-04-15T00:00:00+0000","type":"standard","hash":null,"UUID":"S04"},{"title":"Prayer: Why and How Do I Pray?","start":"2015-04-22T00:00:00+0000","type":"standard","hash":null,"UUID":"S05"},{"title":"Bible: Why and How Do I Read the Bible?","start":"2015-04-29T00:00:00+0000","type":"standard","hash":null,"UUID":"S06"},{"title":"Follow: How Does God Guide Us Into Full Life?","start":"2015-05-06T00:00:00+0000","type":"standard","hash":null,"UUID":"S07"},{"title":"Evil: How Can I Resist Evil?","start":"2015-05-13T00:00:00+0000","type":"standard","hash":null,"UUID":"S09"},{"title":"Healing: Does God Heal Today?","start":"2015-05-20T00:00:00+0000","type":"standard","hash":null,"UUID":"S10"},{"title":"Church: What About the Church and Telling Others?","start":"2015-05-27T00:00:00+0000","type":"standard","hash":null,"UUID":"S17"},{"title":"After Alpha","start":"2015-06-03T00:00:00+0000","type":"after","hash":null,"UUID":"A01"}],"ownerId":1,"locale":"en_GB","length":10,"presentationStyle":"mixed","contexts":["standard","catholic"],"source":"AB","organisation":{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}},"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"},"language":{"ISO":"en","label":"English"},"denomination":{"UUID":"anglican","label":"Anglican"},"timezone":"Europe/London"}],"pager":{"totalItems":1,"totalPages":1,"currentPage":1}}
+
+## Courses [/3/courses]
+
+### Create a course [POST]
+
+You don't have to supply values for the sessions, these will be generated automatically. Try and send the course length and at least one package id where possible. Otherwise we will use the course type to generate the sessions.
+
+Source should be `ab3`, `app`, or `courses`.
+
+The following values are optional:
+
+* finish (will be calculated)
+* approved (defaults to true)
+* published (defaults to false)
+* type (if supplying at least one package id)
+* packages (if supplying a type)
+* resources
+* presentationStyle (legacy for Alpha Builder 1-2 and Alpha App)
+* contexts (legacy for Alpha Builder 1-2 and Alpha App)
+* timezone (automatically set based on the latitude and longitude of the venue)
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"contact":"Jordan de Laune","denomination":"anglican","tasks":["download"],email":"jordan@cultivate4.com","language":"en","name":"My Course","organisation":10,"start":"2015-04-01T00:00:00+0000","venue":7,"source":"AB","approved":true,"published":true,"finish":"2015-06-24T00:00:00+0000","length":10,"locale":"en_GB","type":"Alpha","presentationStyle":"mixed","packages":["42","2"],"resources":"book,video","contexts":["standard","catholic"]}
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"course":{"packages":["42","2"],"id":12,"tasks":["download"],"name":"My Course","contact":"Jordan de Laune","email":"jordan@cultivate4.com","type":"Alpha","resources":"book,video","start":"2015-04-01T00:00:00+0000","finish":"2015-06-03T00:00:00+0000","published":true,"approved":true,"sessions":[{"title":"Preparation","start":"2015-03-18T00:00:00+0000","type":"preparation","hash":null,"UUID":"P01"},{"title":"Training","start":"2015-03-25T00:00:00+0000","type":"training","hash":null,"UUID":"T01"},{"title":"Training","start":"2015-05-07T00:00:00+0000","type":"training","hash":null,"UUID":"T02"},{"title":"Life: Is This It?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S01"},{"title":"Jesus: Who is He?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S02"},{"title":"Cross: Why Did Jesus Die?","start":"2015-04-08T00:00:00+0000","type":"standard","hash":null,"UUID":"S03"},{"title":"Faith: How Can We have Faith?","start":"2015-04-15T00:00:00+0000","type":"standard","hash":null,"UUID":"S04"},{"title":"Prayer: Why and How Do I Pray?","start":"2015-04-22T00:00:00+0000","type":"standard","hash":null,"UUID":"S05"},{"title":"Bible: Why and How Do I Read the Bible?","start":"2015-04-29T00:00:00+0000","type":"standard","hash":null,"UUID":"S06"},{"title":"Follow: How Does God Guide Us Into Full Life?","start":"2015-05-06T00:00:00+0000","type":"standard","hash":null,"UUID":"S07"},{"title":"Evil: How Can I Resist Evil?","start":"2015-05-13T00:00:00+0000","type":"standard","hash":null,"UUID":"S09"},{"title":"Healing: Does God Heal Today?","start":"2015-05-20T00:00:00+0000","type":"standard","hash":null,"UUID":"S10"},{"title":"Church: What About the Church and Telling Others?","start":"2015-05-27T00:00:00+0000","type":"standard","hash":null,"UUID":"S17"},{"title":"After Alpha","start":"2015-06-03T00:00:00+0000","type":"after","hash":null,"UUID":"A01"}],"ownerId":1,"locale":"en_GB","length":10,"presentationStyle":"mixed","contexts":["standard","catholic"],"source":"AB","organisation":{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}},"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"},"language":{"ISO":"en","label":"English"},"denomination":{"UUID":"anglican","label":"Anglican"},"timezone":"Europe/London"}}
+
+
+
+## Course [/3/courses/{id}]
+
++ Parameters
+    + id (required, integer, `1`) ... Id of a course to act upon
+
+### Read a course [GET]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"course":{"packages":[42,2],"id":12,"name":"My Course","contact":"Jordan de Laune","email":"jordan@cultivate4.com","type":"Alpha","resources":"book,video","start":"2015-04-01T00:00:00+0000","finish":"2015-06-03T00:00:00+0000","published":true,"approved":true,"sessions":[{"title":"Preparation","start":"2015-03-18T00:00:00+0000","type":"preparation","hash":null,"UUID":"P01"},{"title":"Training","start":"2015-03-25T00:00:00+0000","type":"training","hash":null,"UUID":"T01"},{"title":"Training","start":"2015-05-07T00:00:00+0000","type":"training","hash":null,"UUID":"T02"},{"title":"Life: Is This It?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S01"},{"title":"Jesus: Who is He?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S02"},{"title":"Cross: Why Did Jesus Die?","start":"2015-04-08T00:00:00+0000","type":"standard","hash":null,"UUID":"S03"},{"title":"Faith: How Can We have Faith?","start":"2015-04-15T00:00:00+0000","type":"standard","hash":null,"UUID":"S04"},{"title":"Prayer: Why and How Do I Pray?","start":"2015-04-22T00:00:00+0000","type":"standard","hash":null,"UUID":"S05"},{"title":"Bible: Why and How Do I Read the Bible?","start":"2015-04-29T00:00:00+0000","type":"standard","hash":null,"UUID":"S06"},{"title":"Follow: How Does God Guide Us Into Full Life?","start":"2015-05-06T00:00:00+0000","type":"standard","hash":null,"UUID":"S07"},{"title":"Evil: How Can I Resist Evil?","start":"2015-05-13T00:00:00+0000","type":"standard","hash":null,"UUID":"S09"},{"title":"Healing: Does God Heal Today?","start":"2015-05-20T00:00:00+0000","type":"standard","hash":null,"UUID":"S10"},{"title":"Church: What About the Church and Telling Others?","start":"2015-05-27T00:00:00+0000","type":"standard","hash":null,"UUID":"S17"},{"title":"After Alpha","start":"2015-06-03T00:00:00+0000","type":"after","hash":null,"UUID":"A01"}],"ownerId":1,"locale":"en_GB","length":10,"presentationStyle":"mixed","contexts":["standard","catholic"],"source":"AB","organisation":{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}},"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"},"language":{"ISO":"en","label":"English"},"denomination":{"UUID":"anglican","label":"Anglican"},"timezone":"Europe/London"}}
+
+
+### Update a course [PUT]
+
+You only need to supply the parameters you want to change, otherwise it will keep the current values.
+
+It is **not** recommended that you change these fields:
+
+* start
+* finish
+* type
+* length
+* contexts
+* presentationStyle
+* source
+* locale
+* language
+
+Sessions will **never be regenerated** by simply changing values of a course. Use the separate API for updating sessions.
+
+You cannot change packages through this API.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"approved":true,"contact":"Jordan de Laune","tasks":["download", "invite"],"contexts":["standard","catholic"],"denomination":"anglican","email":"jordan@cultivate4.com","finish":"2015-06-24T00:00:00+0000","language":"en","length":10,"locale":"en_GB","name":"My Course","organisation":10,"presentationStyle":"mixed","published":true,"resources":"book,video","source":"AB","start":"2015-04-01T00:00:00+0000","type":"Alpha","venue":7}
+
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"course":{"packages":[42,2],"id":12,"tasks":["download", "invite"],"name":"My Course","contact":"Jordan de Laune","email":"jordan@cultivate4.com","type":"Alpha","resources":"book,video","start":"2015-04-01T00:00:00+0000","finish":"2015-06-24T00:00:00+0000","published":true,"approved":true,"sessions":[{"title":"Preparation","start":"2015-03-18T00:00:00+0000","type":"preparation","hash":null,"UUID":"P01"},{"title":"Training","start":"2015-03-25T00:00:00+0000","type":"training","hash":null,"UUID":"T01"},{"title":"Training","start":"2015-05-07T00:00:00+0000","type":"training","hash":null,"UUID":"T02"},{"title":"Life: Is This It?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S01"},{"title":"Jesus: Who is He?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S02"},{"title":"Cross: Why Did Jesus Die?","start":"2015-04-08T00:00:00+0000","type":"standard","hash":null,"UUID":"S03"},{"title":"Faith: How Can We have Faith?","start":"2015-04-15T00:00:00+0000","type":"standard","hash":null,"UUID":"S04"},{"title":"Prayer: Why and How Do I Pray?","start":"2015-04-22T00:00:00+0000","type":"standard","hash":null,"UUID":"S05"},{"title":"Bible: Why and How Do I Read the Bible?","start":"2015-04-29T00:00:00+0000","type":"standard","hash":null,"UUID":"S06"},{"title":"Follow: How Does God Guide Us Into Full Life?","start":"2015-05-06T00:00:00+0000","type":"standard","hash":null,"UUID":"S07"},{"title":"Evil: How Can I Resist Evil?","start":"2015-05-13T00:00:00+0000","type":"standard","hash":null,"UUID":"S09"},{"title":"Healing: Does God Heal Today?","start":"2015-05-20T00:00:00+0000","type":"standard","hash":null,"UUID":"S10"},{"title":"Church: What About the Church and Telling Others?","start":"2015-05-27T00:00:00+0000","type":"standard","hash":null,"UUID":"S17"},{"title":"After Alpha","start":"2015-06-03T00:00:00+0000","type":"after","hash":null,"UUID":"A01"}],"ownerId":1,"locale":"en_GB","length":10,"presentationStyle":"mixed","contexts":["standard","catholic"],"source":"AB","organisation":{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}},"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"},"language":{"ISO":"en","label":"English"},"denomination":{"UUID":"anglican","label":"Anglican"}}}
+
+
+### Delete a course [DELETE]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+
++ Response 204 (text/html; charset=UTF-8)
+
+    + Headers
+
+            Accept: application/json
+
+## Course Tasks [/3/courses/{id}/tasks/complete/{task}]
+
++ Parameters
+    + id (required, integer, `1`) ... Id of a course to act upon
+    + task (required, string, `invite`) ... The key of a task to complete for a course
+
+### Complete a task [PUT]
+
+This will add a completed task to a course, rather than the update which would replace currently completed tasks.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"course":{"packages":[42,2],"id":12,"tasks":["download", "invite", "train"],"name":"My Course","contact":"Jordan de Laune","email":"jordan@cultivate4.com","type":"Alpha","resources":"book,video","start":"2015-04-01T00:00:00+0000","finish":"2015-06-24T00:00:00+0000","published":true,"approved":true,"sessions":[{"title":"Preparation","start":"2015-03-18T00:00:00+0000","type":"preparation","hash":null,"UUID":"P01"},{"title":"Training","start":"2015-03-25T00:00:00+0000","type":"training","hash":null,"UUID":"T01"},{"title":"Training","start":"2015-05-07T00:00:00+0000","type":"training","hash":null,"UUID":"T02"},{"title":"Life: Is This It?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S01"},{"title":"Jesus: Who is He?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S02"},{"title":"Cross: Why Did Jesus Die?","start":"2015-04-08T00:00:00+0000","type":"standard","hash":null,"UUID":"S03"},{"title":"Faith: How Can We have Faith?","start":"2015-04-15T00:00:00+0000","type":"standard","hash":null,"UUID":"S04"},{"title":"Prayer: Why and How Do I Pray?","start":"2015-04-22T00:00:00+0000","type":"standard","hash":null,"UUID":"S05"},{"title":"Bible: Why and How Do I Read the Bible?","start":"2015-04-29T00:00:00+0000","type":"standard","hash":null,"UUID":"S06"},{"title":"Follow: How Does God Guide Us Into Full Life?","start":"2015-05-06T00:00:00+0000","type":"standard","hash":null,"UUID":"S07"},{"title":"Evil: How Can I Resist Evil?","start":"2015-05-13T00:00:00+0000","type":"standard","hash":null,"UUID":"S09"},{"title":"Healing: Does God Heal Today?","start":"2015-05-20T00:00:00+0000","type":"standard","hash":null,"UUID":"S10"},{"title":"Church: What About the Church and Telling Others?","start":"2015-05-27T00:00:00+0000","type":"standard","hash":null,"UUID":"S17"},{"title":"After Alpha","start":"2015-06-03T00:00:00+0000","type":"after","hash":null,"UUID":"A01"}],"ownerId":1,"locale":"en_GB","length":10,"presentationStyle":"mixed","contexts":["standard","catholic"],"source":"AB","organisation":{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}},"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"},"language":{"ISO":"en","label":"English"},"denomination":{"UUID":"anglican","label":"Anglican"}}}
+
+
+
+# Group Venues
+
+## Venues [/3/venues?all]
+
+Venues store locations where people run Alpha.
+
++ Parameters
+    + all = `false` (optional, boolean, `true`) ... If an administrator with the role *ACS* they can request all venues and not just the ones they own.
+
+### List all venues [GET]
+
+Venues are automatically filtered to the owner's access token. Administrators with the role *ACS* can request all venues.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"venues":[{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"}],"pager":{"totalItems":1,"totalPages":1,"currentPage":1}}
+
+## Venues [/3/venues]
+
+### Create a venue [POST]
+
+If you don't supply a `latitude` and `longitude` then we will try and geo-encode values using the address supplied.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","country":"GB","county":"Greater London","latitude":1.1012,"longitude":-1.10122,"name":"Alpha International","postcode":"SW7 1JA","locale":"en_GB"}
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"}}
+
+
+## Venue [/3/venues/{id}]
+
++ Parameters
+    + id (required, integer, `1`) ... Id of a venue to act upon
+
+### Read a venue [GET]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"venue":{"id":4,"name":"Venue Name","addressLine1":"Address 1","addressLine2":"Address 2","addressLine3":"Address 3","city":"City","county":"County","postcode":"SW15 3SA","country":"GB","latitude":1.1011,"longitude":-1.10123,"ownerId":1,"created":"2015-03-06T11:30:34+0000","updated":"2015-03-06T11:30:34+0000"}}
+
+
+### Update a venue [PUT]
+
+You only need to supply the parameters you want to change, otherwise it will keep the current values.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","country":"GB","county":"Greater London","latitude":1.1012,"longitude":-1.10122,"name":"Alpha International","postcode":"SW7 1JA","locale":"en_GB"}
+
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"venue":{"id":4,"name":"Alpha International","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T11:30:34+0000","updated":"2015-03-06T11:32:41+0000"}}
+
+
+### Delete a venue [DELETE]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+
++ Response 204 (text/html; charset=UTF-8)
+
+    + Headers
+
+            Accept: application/json
+
+
+# Group Organisations
+
+## Organisations [/3/organisations?all]
+
+Organisations which run Alpha.
+
++ Parameters
+    + all = `false` (optional, boolean, `true`) ... If an administrator with the role *ACS* they can request all organisations and not just the ones they own.
+
+### List all organisations [GET]
+
+Organisations are automatically filtered to the owner's access token. Administrators with the role *ACS* can request all organisations.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"organisations":[{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}}],"pager":{"totalItems":1,"totalPages":1,"currentPage":1}}
+
+
+## Organisations [/3/organisations]
+
+### Create an organisation [POST]
+
+If you don't supply a `latitude` and `longitude` then we will try and geo-encode values using the address supplied.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","country":"GB","county":"Greater London","latitude":1.1012,"locale":"en_GB","longitude":-1.10122,"name":"Alpha International","phone":"+44 182 3239 232","postcode":"SW7 1JA","type":"workplace","website":"http://www.alpha.org"}
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"organisation":{"id":11,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:28:02+0000","updated":"2015-03-06T12:28:02+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}}}
+
+
+## Organisation [/3/organisations/{id}]
+
++ Parameters
+    + id (required, integer, `1`) ... Id of a venue to act upon
+
+### Read an organisation [GET]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"organisation":{"id":11,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:28:02+0000","updated":"2015-03-06T12:28:02+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}}}
+
+
+### Update an organisation [PUT]
+
+You only need to supply the parameters you want to change, otherwise it will keep the current values.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","country":"GB","county":"Greater London","latitude":1.1012,"locale":"en_GB","longitude":-1.10122,"name":"Alpha International","phone":"+44 182 3239 232","postcode":"SW7 1JA","type":"workplace","website":"http://www.alpha.org"}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"organisation":{"id":11,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:28:02+0000","updated":"2015-03-06T12:29:23+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}}}
+
+
+### Delete an organisation [DELETE]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+
++ Response 204 (text/html; charset=UTF-8)
+
+    + Headers
+
+            Accept: application/json
+
+
+# Group Sessions
+
+## Reschedule a course [/3/course/{courseId}/reschedule]
+
+Reschedules all of a courses sessions to a new start datetime.
+
+**Warning** will wipe any changes made to existing sessions.
+
++ Parameters
+    + courseId (required, integer, `1`) ... The id of the course you want to reschedule.
+
+### Reschedule [PUT]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"start":"2016-01-01T19:00:00+0000","timezone":"Europe/London"}
+
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"course":{"packages":[42,2],"id":13,"name":"My Course","contact":"Jordan de Laune","email":"jordan@cultivate4.com","type":"Alpha","resources":"book,video","start":"2016-01-01T19:00:00+0000","finish":"2016-03-04T19:00:00+0000","published":true,"approved":true,"sessions":[{"title":"Preparation","start":"2015-12-18T19:00:00+0000","type":"preparation","hash":null,"UUID":"P01"},{"title":"Training","start":"2015-12-25T19:00:00+0000","type":"training","hash":null,"UUID":"T01"},{"title":"Training","start":"2016-02-04T19:00:00+0000","type":"training","hash":null,"UUID":"T02"},{"title":"Life: Is This It?","start":"2016-01-01T19:00:00+0000","type":"standard","hash":null,"UUID":"S01"},{"title":"Jesus: Who is He?","start":"2016-01-01T19:00:00+0000","type":"standard","hash":null,"UUID":"S02"},{"title":"Cross: Why Did Jesus Die?","start":"2016-01-08T19:00:00+0000","type":"standard","hash":null,"UUID":"S03"},{"title":"Faith: How Can We have Faith?","start":"2016-01-15T19:00:00+0000","type":"standard","hash":null,"UUID":"S04"},{"title":"Prayer: Why and How Do I Pray?","start":"2016-01-22T19:00:00+0000","type":"standard","hash":null,"UUID":"S05"},{"title":"Bible: Why and How Do I Read the Bible?","start":"2016-01-29T19:00:00+0000","type":"standard","hash":null,"UUID":"S06"},{"title":"Follow: How Does God Guide Us Into Full Life?","start":"2016-02-05T19:00:00+0000","type":"standard","hash":null,"UUID":"S07"},{"title":"Evil: How Can I Resist Evil?","start":"2016-02-12T19:00:00+0000","type":"standard","hash":null,"UUID":"S09"},{"title":"Healing: Does God Heal Today?","start":"2016-02-19T19:00:00+0000","type":"standard","hash":null,"UUID":"S10"},{"title":"Church: What About the Church and Telling Others?","start":"2016-02-26T19:00:00+0000","type":"standard","hash":null,"UUID":"S17"},{"title":"After Alpha","start":"2016-03-04T19:00:00+0000","type":"after","hash":null,"UUID":"A01"}],"ownerId":1,"locale":"en_GB","length":10,"presentationStyle":"mixed","contexts":["standard","catholic"],"source":"AB","organisation":{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}},"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"},"language":{"ISO":"en","label":"English"},"denomination":{"UUID":"anglican","label":"Anglican"},"timezone":"Europe/London"}}
+
+## Update sessions [/3/course/{courseId}/session]
+
+Mass update sessions of a course.
+
++ Parameters
+    + courseId (required, integer, `1`) ... The id of the course you want to update the sessions of.
+
+### Mass update [PUT]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"sessions":[{"UUID":"S01","start":"2017-01-01T00:00:00+0000"},{"UUID":"P01","start":"2018-01-01T00:00:00+0000"}],"timezone":"Europe/London"}
+
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"course":{"packages":[42,2],"id":13,"name":"My Course","contact":"Jordan de Laune","email":"jordan@cultivate4.com","type":"Alpha","resources":"book,video","start":"2016-01-01T19:00:00+0000","finish":"2016-03-04T19:00:00+0000","published":true,"approved":true,"sessions":[{"title":"Preparation","start":"2018-01-01T00:00:00+0000","type":"preparation","hash":null,"UUID":"P01"},{"title":"Training","start":"2015-12-25T19:00:00+0000","type":"training","hash":null,"UUID":"T01"},{"title":"Training","start":"2016-02-04T19:00:00+0000","type":"training","hash":null,"UUID":"T02"},{"title":"Life: Is This It?","start":"2017-01-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S01"},{"title":"Jesus: Who is He?","start":"2016-01-01T19:00:00+0000","type":"standard","hash":null,"UUID":"S02"},{"title":"Cross: Why Did Jesus Die?","start":"2016-01-08T19:00:00+0000","type":"standard","hash":null,"UUID":"S03"},{"title":"Faith: How Can We have Faith?","start":"2016-01-15T19:00:00+0000","type":"standard","hash":null,"UUID":"S04"},{"title":"Prayer: Why and How Do I Pray?","start":"2016-01-22T19:00:00+0000","type":"standard","hash":null,"UUID":"S05"},{"title":"Bible: Why and How Do I Read the Bible?","start":"2016-01-29T19:00:00+0000","type":"standard","hash":null,"UUID":"S06"},{"title":"Follow: How Does God Guide Us Into Full Life?","start":"2016-02-05T19:00:00+0000","type":"standard","hash":null,"UUID":"S07"},{"title":"Evil: How Can I Resist Evil?","start":"2016-02-12T19:00:00+0000","type":"standard","hash":null,"UUID":"S09"},{"title":"Healing: Does God Heal Today?","start":"2016-02-19T19:00:00+0000","type":"standard","hash":null,"UUID":"S10"},{"title":"Church: What About the Church and Telling Others?","start":"2016-02-26T19:00:00+0000","type":"standard","hash":null,"UUID":"S17"},{"title":"After Alpha","start":"2016-03-04T19:00:00+0000","type":"after","hash":null,"UUID":"A01"}],"ownerId":1,"locale":"en_GB","length":10,"presentationStyle":"mixed","contexts":["standard","catholic"],"source":"AB","organisation":{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}},"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"},"language":{"ISO":"en","label":"English"},"denomination":{"UUID":"anglican","label":"Anglican"},"timezone":"Europe/London"}}
+
+
+# Group Denominations
+
+## Denominations [/3/utilities/{locale}/denominations]
+
+Denominations are a utility resource for courses, and are used to fetch the Denomination UUID when creating a course.
+
+Please note an Alpha administrator has to create denominations in the base locale _en_ before any NAO can create a denomination in their own locale.
+
++ Parameters
+    + locale (required, string, `en`) ... Locale of denominations to list
+
+### List all denominations for a locale [GET]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"denominations":[{"UUID":"anglican","label":"Anglican"}]}
+
+
+### Create a denomination [POST]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"UUID":"anglican","label":"Anglican"}
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"denomination":{"UUID":"anglican","locale":"en_GB","label":"Anglican"}}
+
+
+## Denomination [/3/utilities/{locale}/denominations/{UUID}]
+
++ Parameters
+    + locale (required, string, `en`) ... Locale of denominations to list
+    + UUID (required, string, `anglican`) ... UUID of denomination to act upon
+
+### Read a denomination [GET]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"denomination":{"UUID":"anglican","locale":"en_GB","label":"Anglican"}}
+
+
+### Update a denomination [PUT]
+
+You only need to supply the parameters you want to change, otherwise it will keep the current values.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"label":"Anglican"}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"denomination":{"UUID":"anglican","locale":"en_GB","label":"Anglicans"}}
+
+
+### Delete a denomination [DELETE]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+
++ Response 204 (text/html; charset=UTF-8)
+
+    + Headers
+
+            Accept: application/json
+
+# Group Languages
+
+## Languages [/3/utilities/{locale}/languages]
+
+Languages are a utility resource for courses, and are used to fetch the language ISO when creating a course.
+
+Please note an Alpha administrator has to create languages in the base locale _en_ before any NAO can create a language in their own locale.
+
++ Parameters
+    + locale (required, string, `en`) ... Locale of languages to list
+
+### List all languages for a locale [GET]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"languages":[{"ISO":"en","label":"English"},{"ISO":"fr","label":"French"}]}
+
+
+### Create a language [POST]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"ISO":"en","label":"English"}
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"language":{"ISO":"en","label":"English"}}
+
+
+## Language [/3/utilities/{locale}/languages/{ISO}]
+
++ Parameters
+    + locale (required, string, `en`) ... Locale of languages to list
+    + ISO (required, string, `fr`) ... ISO of lanuage to act upon
+
+
+### Read a language [GET]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"language":{"ISO":"en","label":"English"}}
+
+
+### Update a language [PUT]
+
+You only need to supply the parameters you want to change, otherwise it will keep the current values.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"label":"English"}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"language":{"ISO":"en","label":"English"}}
+
+
+### Delete a language [DELETE]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+
++ Response 204 (text/html; charset=UTF-8)
+
+    + Headers
+
+            Accept: application/json
+
+# Group Organisation Types
+
+## Organisation Types [/3/utilities/{locale}/organisation-types]
+
+Organisation Types are a utility resource for organisations, and are used to fetch the Organisation Type UUID when creating an organisation.
+
+Please note an Alpha administrator has to create organisation types in the base locale _en_ before any NAO can create an organisation type in their own locale.
+
++ Parameters
+    + locale (required, string, `en`) ... Locale of organisation types to list
+
+### List all organisation types for a locale [GET]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"organisationTypes":[{"UUID":"workplace","label":"Workplace"}]}
+
+
+### Create a organisation type [POST]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"UUID":"workplace","label":"Workplace"}
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"type":{"UUID":"workplace","label":"Workplace"}}
+
+
+## Organisation Type [/3/utilities/{locale}/organisation-types/{UUID}]
+
++ Parameters
+    + locale (required, string, `en`) ... Locale of organisation type
+    + UUID (required, string, `workplace`) ... UUID of organisation type to act upon
+
+### Read an organisation type [GET]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"type":{"UUID":"workplace","label":"Workplace"}}
+
+
+### Update an organisation type [PUT]
+
+You only need to supply the parameters you want to change, otherwise it will keep the current values.
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+    + Body
+
+            {"type":{"label":"Workplace"}}
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {"type":{"UUID":"workplace","label":"Workplace"}}
+
+
+### Delete an organisation type [DELETE]
+
++ Request
+
+    + Headers
+
+            Authorization: Basic {accessToken}
+
+
++ Response 204 (text/html; charset=UTF-8)
+
+    + Headers
+
+            Accept: application/json
