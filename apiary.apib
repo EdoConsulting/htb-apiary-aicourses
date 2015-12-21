@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://courses-api.alpha.org
+HOST: https://courses-api.alpha.org/3
 
 # Courses (v3)
 
@@ -20,9 +20,13 @@ It also allows all first or third party systems to gain access to a list of para
 
 # Group Public
 
-## Denominations [/3/public/utilities/{locale}/denominations]
+## Denominations [/public/utilities/{locale}/denominations]
 
 Fetch a list of denominations for a locale
+
++ Attributes (object)
+    + UUID: anglican - denomination identifier
+    + label: Anglican - Label for the denomination in the given locale
 
 ### Publicly list all denominations for a locale [GET]
 
@@ -35,11 +39,11 @@ Fetch a list of denominations for a locale
 
             Accept: application/json
 
-    + Body
+    + Attributes (object)
+        + denominations (array)
+            + (Denominations)
 
-            {"denominations":{"anglican":"Anglican"}}
-
-## Languages [/3/public/utilities/{locale}/languages]
+## Languages [/public/utilities/{locale}/languages]
 
 Fetch a list of languages for a locale
 
@@ -58,7 +62,7 @@ Fetch a list of languages for a locale
 
             {"languages":{"en":"English","fr":"French"}}
 
-## Organisation Types [/3/public/utilities/{locale}/organisation-types]
+## Organisation Types [/public/utilities/{locale}/organisation-types]
 
 Fetch a list of organisation types for a locale
 
@@ -77,7 +81,7 @@ Fetch a list of organisation types for a locale
 
             {"organisationTypes":{"workplace":"Workplace"}}
 
-## Timezones [/3/public/utilities/{locale}/timezones/{countryCode}]
+## Timezones [/public/utilities/{locale}/timezones/{countryCode}]
 
 Fetch a list timezones for a country
 
@@ -99,7 +103,7 @@ Fetch a list timezones for a country
 
 # Group Courses
 
-## Courses [/3/courses?all,active,inactive]
+## Courses [/courses?all,active,inactive]
 
 Venues store locations where people run Alpha.
 
@@ -128,7 +132,7 @@ Venues are automatically filtered to the owner's access token. Administrators wi
 
             {"courses":[{"packages":[42,2],"id":12,"name":"My Course","contact":"Jordan de Laune","email":"jordan@cultivate4.com","type":"Alpha","resources":"book,video","start":"2015-04-01T00:00:00+0000","finish":"2015-06-03T00:00:00+0000","published":true,"approved":true,"sessions":[{"title":"Preparation","start":"2015-03-18T00:00:00+0000","type":"preparation","hash":null,"UUID":"P01"},{"title":"Training","start":"2015-03-25T00:00:00+0000","type":"training","hash":null,"UUID":"T01"},{"title":"Training","start":"2015-05-07T00:00:00+0000","type":"training","hash":null,"UUID":"T02"},{"title":"Life: Is This It?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S01"},{"title":"Jesus: Who is He?","start":"2015-04-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S02"},{"title":"Cross: Why Did Jesus Die?","start":"2015-04-08T00:00:00+0000","type":"standard","hash":null,"UUID":"S03"},{"title":"Faith: How Can We have Faith?","start":"2015-04-15T00:00:00+0000","type":"standard","hash":null,"UUID":"S04"},{"title":"Prayer: Why and How Do I Pray?","start":"2015-04-22T00:00:00+0000","type":"standard","hash":null,"UUID":"S05"},{"title":"Bible: Why and How Do I Read the Bible?","start":"2015-04-29T00:00:00+0000","type":"standard","hash":null,"UUID":"S06"},{"title":"Follow: How Does God Guide Us Into Full Life?","start":"2015-05-06T00:00:00+0000","type":"standard","hash":null,"UUID":"S07"},{"title":"Evil: How Can I Resist Evil?","start":"2015-05-13T00:00:00+0000","type":"standard","hash":null,"UUID":"S09"},{"title":"Healing: Does God Heal Today?","start":"2015-05-20T00:00:00+0000","type":"standard","hash":null,"UUID":"S10"},{"title":"Church: What About the Church and Telling Others?","start":"2015-05-27T00:00:00+0000","type":"standard","hash":null,"UUID":"S17"},{"title":"After Alpha","start":"2015-06-03T00:00:00+0000","type":"after","hash":null,"UUID":"A01"}],"ownerId":1,"locale":"en_GB","length":10,"presentationStyle":"mixed","contexts":["standard","catholic"],"source":"AB","organisation":{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}},"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"},"language":{"ISO":"en","label":"English"},"denomination":{"UUID":"anglican","label":"Anglican"},"timezone":"Europe/London"}],"pager":{"totalItems":1,"totalPages":1,"currentPage":1}}
 
-## Courses [/3/courses]
+## Courses [/courses]
 
 ### Create a course [POST]
 
@@ -170,7 +174,7 @@ The following values are optional:
 
 
 
-## Course [/3/courses/{id}]
+## Course [/courses/{id}]
 
 + Parameters
     + id (required, integer, `1`) ... Id of a course to act upon
@@ -251,7 +255,7 @@ You cannot change packages through this API.
 
             Accept: application/json
 
-## Course Tasks [/3/courses/{id}/tasks/complete/{task}]
+## Course Tasks [/courses/{id}/tasks/complete/{task}]
 
 + Parameters
     + id (required, integer, `1`) ... Id of a course to act upon
@@ -281,7 +285,7 @@ This will add a completed task to a course, rather than the update which would r
 
 # Group Venues
 
-## Venues [/3/venues?all]
+## Venues [/venues?all]
 
 Venues store locations where people run Alpha.
 
@@ -308,7 +312,7 @@ Venues are automatically filtered to the owner's access token. Administrators wi
 
             {"venues":[{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"}],"pager":{"totalItems":1,"totalPages":1,"currentPage":1}}
 
-## Venues [/3/venues]
+## Venues [/venues]
 
 ### Create a venue [POST]
 
@@ -335,7 +339,7 @@ If you don't supply a `latitude` and `longitude` then we will try and geo-encode
             {"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"}}
 
 
-## Venue [/3/venues/{id}]
+## Venue [/venues/{id}]
 
 + Parameters
     + id (required, integer, `1`) ... Id of a venue to act upon
@@ -403,7 +407,7 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
 # Group Organisations
 
-## Organisations [/3/organisations?all]
+## Organisations [/organisations?all]
 
 Organisations which run Alpha.
 
@@ -431,7 +435,7 @@ Organisations are automatically filtered to the owner's access token. Administra
             {"organisations":[{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}}],"pager":{"totalItems":1,"totalPages":1,"currentPage":1}}
 
 
-## Organisations [/3/organisations]
+## Organisations [/organisations]
 
 ### Create an organisation [POST]
 
@@ -458,7 +462,7 @@ If you don't supply a `latitude` and `longitude` then we will try and geo-encode
             {"organisation":{"id":11,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:28:02+0000","updated":"2015-03-06T12:28:02+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}}}
 
 
-## Organisation [/3/organisations/{id}]
+## Organisation [/organisations/{id}]
 
 + Parameters
     + id (required, integer, `1`) ... Id of a venue to act upon
@@ -525,7 +529,7 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
 # Group Sessions
 
-## Reschedule a course [/3/course/{courseId}/reschedule]
+## Reschedule a course [/course/{courseId}/reschedule]
 
 Reschedules all of a courses sessions to a new start datetime.
 
@@ -557,7 +561,7 @@ Reschedules all of a courses sessions to a new start datetime.
 
             {"course":{"packages":[42,2],"id":13,"name":"My Course","contact":"Jordan de Laune","email":"jordan@cultivate4.com","type":"Alpha","resources":"book,video","start":"2016-01-01T19:00:00+0000","finish":"2016-03-04T19:00:00+0000","published":true,"approved":true,"sessions":[{"title":"Preparation","start":"2015-12-18T19:00:00+0000","type":"preparation","hash":null,"UUID":"P01"},{"title":"Training","start":"2015-12-25T19:00:00+0000","type":"training","hash":null,"UUID":"T01"},{"title":"Training","start":"2016-02-04T19:00:00+0000","type":"training","hash":null,"UUID":"T02"},{"title":"Life: Is This It?","start":"2016-01-01T19:00:00+0000","type":"standard","hash":null,"UUID":"S01"},{"title":"Jesus: Who is He?","start":"2016-01-01T19:00:00+0000","type":"standard","hash":null,"UUID":"S02"},{"title":"Cross: Why Did Jesus Die?","start":"2016-01-08T19:00:00+0000","type":"standard","hash":null,"UUID":"S03"},{"title":"Faith: How Can We have Faith?","start":"2016-01-15T19:00:00+0000","type":"standard","hash":null,"UUID":"S04"},{"title":"Prayer: Why and How Do I Pray?","start":"2016-01-22T19:00:00+0000","type":"standard","hash":null,"UUID":"S05"},{"title":"Bible: Why and How Do I Read the Bible?","start":"2016-01-29T19:00:00+0000","type":"standard","hash":null,"UUID":"S06"},{"title":"Follow: How Does God Guide Us Into Full Life?","start":"2016-02-05T19:00:00+0000","type":"standard","hash":null,"UUID":"S07"},{"title":"Evil: How Can I Resist Evil?","start":"2016-02-12T19:00:00+0000","type":"standard","hash":null,"UUID":"S09"},{"title":"Healing: Does God Heal Today?","start":"2016-02-19T19:00:00+0000","type":"standard","hash":null,"UUID":"S10"},{"title":"Church: What About the Church and Telling Others?","start":"2016-02-26T19:00:00+0000","type":"standard","hash":null,"UUID":"S17"},{"title":"After Alpha","start":"2016-03-04T19:00:00+0000","type":"after","hash":null,"UUID":"A01"}],"ownerId":1,"locale":"en_GB","length":10,"presentationStyle":"mixed","contexts":["standard","catholic"],"source":"AB","organisation":{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}},"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"},"language":{"ISO":"en","label":"English"},"denomination":{"UUID":"anglican","label":"Anglican"},"timezone":"Europe/London"}}
 
-## Update sessions [/3/course/{courseId}/session]
+## Update sessions [/course/{courseId}/session]
 
 Mass update sessions of a course.
 
@@ -590,7 +594,7 @@ Mass update sessions of a course.
 
 # Group Denominations
 
-## Denominations [/3/utilities/{locale}/denominations]
+## Denominations [/utilities/{locale}/denominations]
 
 Denominations are a utility resource for courses, and are used to fetch the Denomination UUID when creating a course.
 
@@ -641,7 +645,7 @@ Please note an Alpha administrator has to create denominations in the base local
             {"denomination":{"UUID":"anglican","locale":"en_GB","label":"Anglican"}}
 
 
-## Denomination [/3/utilities/{locale}/denominations/{UUID}]
+## Denomination [/utilities/{locale}/denominations/{UUID}]
 
 + Parameters
     + locale (required, string, `en`) ... Locale of denominations to list
@@ -708,7 +712,7 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
 # Group Languages
 
-## Languages [/3/utilities/{locale}/languages]
+## Languages [/utilities/{locale}/languages]
 
 Languages are a utility resource for courses, and are used to fetch the language ISO when creating a course.
 
@@ -759,7 +763,7 @@ Please note an Alpha administrator has to create languages in the base locale _e
             {"language":{"ISO":"en","label":"English"}}
 
 
-## Language [/3/utilities/{locale}/languages/{ISO}]
+## Language [/utilities/{locale}/languages/{ISO}]
 
 + Parameters
     + locale (required, string, `en`) ... Locale of languages to list
@@ -827,7 +831,7 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
 # Group Organisation Types
 
-## Organisation Types [/3/utilities/{locale}/organisation-types]
+## Organisation Types [/utilities/{locale}/organisation-types]
 
 Organisation Types are a utility resource for organisations, and are used to fetch the Organisation Type UUID when creating an organisation.
 
@@ -878,7 +882,7 @@ Please note an Alpha administrator has to create organisation types in the base 
             {"type":{"UUID":"workplace","label":"Workplace"}}
 
 
-## Organisation Type [/3/utilities/{locale}/organisation-types/{UUID}]
+## Organisation Type [/utilities/{locale}/organisation-types/{UUID}]
 
 + Parameters
     + locale (required, string, `en`) ... Locale of organisation type
