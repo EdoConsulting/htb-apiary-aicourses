@@ -178,51 +178,30 @@ Combined list of public data for a locale
 
 ## Courses [/courses]
 
-Alpha courses.
-
 + Attributes
-    + id
-    + name
-    + contact
-    + email
-    + phone
-    + website
-    + type
+    + id: 45723 (number) - the course ID
+    + name: `Example course` - name of the course
+    + contact: `John Doe` - contact name
+    + email: `johndoe@example.com` - contact email address
+    + phone: `0771234567890` - contact phone number
+    + type: `Alpha` - type of course
     + resources
-    + start
-    + finish
-    + private
-    + published
-    + approved
-    + organisation
+    + start: `2016-02-08T09:00:00+0000` - start date of course
+    + finish: `2016-02-15T18:00:00+0000` - end date of course
+    + published: true (boolean) - is published
+    + approved: true (boolean) - is approved
+    + organisationId
     + sessions
-    + location
-    + locationType
-    + ownerId
-    + locale
-    + timezone
-    + logoId
-    + length
-    + presentationStyle
-    + contexts
-    + tasks
-    + source
-    + code
-    + teamMembers
-    + roleType
-    + level
-    + packages
-    + vanue
-    + language
-    + denomination
-    + deleted
-    + created
-    + updated
-    + createdBy
-    + updatedBy
-    + languageLabel
-    + denominationLabel
-    
+    + ownerId: 190835 (number) - ID of the course owner
+    + locale: `en_GB` - locale of the course
+    + timezone: `Europe/London` - timezone of the course
+    + length: 11 (number) - length of the course
+    + presentationStyle: `live` - presentation style
+    + contexts (array)
+    + tasks (array)
+    + source: alphabuilder - how the course was added
+    + venue
+    + organisation
 
 ### List all courses [GET /courses?all,active,inactive]
 
