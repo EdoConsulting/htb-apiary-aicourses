@@ -176,7 +176,7 @@ Combined list of public data for a locale
 
 # Group Courses
 
-## Courses [/courses]
+## Course [/courses]
 
 + Attributes
     + packages: 11, 12 (array)
@@ -225,7 +225,7 @@ Venues are automatically filtered to the owner's access token. Administrators wi
 
     + Attributes
         + courses (array)
-            + (Courses)
+            + (Course)
         + pager (object)
             + totalItems: 4
             + totalPages: 1
@@ -255,11 +255,11 @@ The following values are optional:
 
             Authorization: Bearer {accessToken}
 
-    + Attributes (Courses)
+    + Attributes (Course)
 
 + Response 201 (application/json)
 
-    + Attributes (Courses)
+    + Attributes (Course)
 
 ### Read a course [GET /courses/{id}]
 
@@ -272,7 +272,7 @@ The following values are optional:
 
 + Response 200 (application/json)
 
-    + Attributes (Courses)
+    + Attributes (Course)
 
 ### Update a course [PUT /courses/{id}]
 
@@ -302,13 +302,13 @@ You cannot change packages through this API.
 
             Authorization: Bearer {accessToken}
 
-    + Attributes (Courses)
+    + Attributes (Course)
 
 
 + Response 200 (application/json)
 
 
-    + Attributes (Courses)
+    + Attributes (Course)
 
 
 ### Delete a course [DELETE /courses/{id}]
@@ -337,7 +337,7 @@ This will add a completed task to a course, rather than the update which would r
 
 + Response 200 (application/json)
 
-    + Attributes (Courses)
+    + Attributes (Course)
 
 ## Invite Email Copy [/courses/{id}/invite-email-copy]
 
