@@ -363,7 +363,7 @@ Get a calendar item (ics file) for a course.
 
 # Group Venues
 
-## Venue [/venues?all]
+## Venue [/venues]
 
 Venues store locations where people run Alpha.
 
@@ -385,14 +385,14 @@ Venues store locations where people run Alpha.
     + updated: `2015-12-17T11:33:04+0000` - datetime when updated
 
 
-+ Parameters
-    + all = `false` (optional, boolean, `true`) ... If an administrator with the role *ACS* they can request all venues and not just the ones they own.
-
-### List all venues [GET]
+### List all venues [GET /venues?all]
 
 Venues are automatically filtered to the owner's access token. Administrators with the role *ACS* can request all venues.
 
 + Request
+
+    + Parameters
+        + all = `false` (optional, boolean, `true`) ... If an administrator with the role *ACS* they can request all venues and not just the ones they own.
 
     + Headers
 
@@ -407,8 +407,6 @@ Venues are automatically filtered to the owner's access token. Administrators wi
     + Body
 
             {"venues":[{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"}],"pager":{"totalItems":1,"totalPages":1,"currentPage":1}}
-
-## Venues [/venues]
 
 ### Create a venue [POST]
 
