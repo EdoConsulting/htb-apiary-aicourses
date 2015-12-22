@@ -61,10 +61,6 @@ Fetch a list of languages for a locale
 
 Fetch a list of organisation types for a locale
 
-+ Attributes
-    + UUID: home - organisation type ID
-    + label: Home - translated label for the organisation type
-
 ### Publicly list all organisation types for a locale [GET]
 
 + Parameters
@@ -74,7 +70,7 @@ Fetch a list of organisation types for a locale
 
     + Attributes (object)
         + organisationTypes (array)
-            + (Organisation Types)
+            + (Organisation Type)
 
 ## Timezones [/public/utilities/{locale}/timezones/{countryCode}]
 
@@ -162,7 +158,7 @@ Combined list of public data for a locale
     + languages (array) - list of languages
         + (Languages list)
     + organisationTypes (array) - list of organisation types
-        + (Organisation Types)
+        + (Organisation Type)
     + timezones (object) - list of timezones
 
 ### Publicly list all data for a locale [GET]
@@ -203,7 +199,7 @@ Combined list of public data for a locale
     + contexts (array)
     + tasks (array)
     + source: alphabuilder - how the course was added
-    + venue
+    + venue (Venue)
     + organisation
 
 ### List all courses [GET /courses?all,active,inactive]
@@ -226,11 +222,8 @@ Venues are automatically filtered to the owner's access token. Administrators wi
     + Attributes
         + courses (array)
             + (Course)
-        + pager (object)
-            + totalItems: 4
-            + totalPages: 1
-            + currentPage: 1
-    
+        + pager (Pager)
+
 ### Create a course [POST]
 
 You don't have to supply values for the sessions, these will be generated automatically. Try and send the course length and at least one package id where possible. Otherwise we will use the course type to generate the sessions.
@@ -367,7 +360,7 @@ Get a calendar item (ics file) for a course.
 
 Venues store locations where people run Alpha.
 
-+Attributes
++ Attributes (object)
     + id: 23566 (number) - the venue ID
     + name: `Holy Trinity` - name of the venue
     + locale: `en_GB` - locale of the venue
@@ -378,8 +371,8 @@ Venues store locations where people run Alpha.
     + county: `London` - county
     + postcode: `W1A 1AA` - post code
     + country: GB - 2 character ISO country code
-    + latitude: 51.4533268 - latitude of venue
-    + longitude: -2.5931839 - longitude of venue
+    + latitude: `51.4533268` - latitude of venue
+    + longitude: `-2.5931839` - longitude of venue
     + ownerId: 124588 - user that owns the venue entry
     + created: `2015-12-17T11:33:04+0000` - datetime when created
     + updated: `2015-12-17T11:33:04+0000` - datetime when updated
@@ -404,9 +397,10 @@ Venues are automatically filtered to the owner's access token. Administrators wi
 
             Accept: application/json
 
-    + Body
-
-            {"venues":[{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"}],"pager":{"totalItems":1,"totalPages":1,"currentPage":1}}
+    + Attributes
+        + venues (array)
+            + (Venue)
+        + pager (Pager)            
 
 ### Create a venue [POST]
 
@@ -418,19 +412,11 @@ If you don't supply a `latitude` and `longitude` then we will try and geo-encode
 
             Authorization: Bearer {accessToken}
 
-    + Body
-
-            {"addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","country":"GB","county":"Greater London","latitude":1.1012,"longitude":-1.10122,"name":"Alpha International","postcode":"SW7 1JA","locale":"en_GB"}
+    + Attributes (Venue)
 
 + Response 201 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"}}
+    + Attributes (Venue)
 
 
 ## Venue [/venues/{id}]
@@ -448,14 +434,7 @@ If you don't supply a `latitude` and `longitude` then we will try and geo-encode
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"venue":{"id":4,"name":"Venue Name","addressLine1":"Address 1","addressLine2":"Address 2","addressLine3":"Address 3","city":"City","county":"County","postcode":"SW15 3SA","country":"GB","latitude":1.1011,"longitude":-1.10123,"ownerId":1,"created":"2015-03-06T11:30:34+0000","updated":"2015-03-06T11:30:34+0000"}}
-
+    + Attributes (Venue)
 
 ### Update a venue [PUT]
 
@@ -463,24 +442,12 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
 + Request
 
-    + Headers
-
-            Authorization: Bearer {accessToken}
-
-    + Body
-
-            {"addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","country":"GB","county":"Greater London","latitude":1.1012,"longitude":-1.10122,"name":"Alpha International","postcode":"SW7 1JA","locale":"en_GB"}
+    + Attributes (Venue)
 
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"venue":{"id":4,"name":"Alpha International","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T11:30:34+0000","updated":"2015-03-06T11:32:41+0000"}}
+    + Attributes (Venue)
 
 
 ### Delete a venue [DELETE]
@@ -492,28 +459,44 @@ You only need to supply the parameters you want to change, otherwise it will kee
             Authorization: Bearer {accessToken}
 
 
-+ Response 204 (text/html; charset=UTF-8)
-
-    + Headers
-
-            Accept: application/json
++ Response 204 (application/json)
 
 
 # Group Organisations
 
-## Organisations [/organisations?all]
+## Organisation [/organisations?all]
 
 Organisations which run Alpha.
 
-+ Parameters
-    + all = `false` (optional, boolean, `true`) ... If an administrator with the role *ACS* they can request all organisations and not just the ones they own.
++ Attributes
+    + id: 23859 - organisation ID
+    + name: `Example Org` - name of organisation
+    + locale: en_GB - locale for organisation
+    + addressLine1: `1 Examplestrasse` - address line 1
+    + addressLine2 - address line 2
+    + addressLine3 - address line 3
+    + city: Sometown - city 
+    + county: Sampleshire - county
+    + postcode: XX2 3YY - postcode / zip
+    + country: GB - country for organisation
+    + latitude: `51.4533268` - latitude
+    + longitude: `-2.5931839` - longitude
+    + ownerId: 190835 - ID of owning user
+    + created: `2015-12-17T11:33:04+0000` - when created
+    + updated: `2015-12-17T11:33:04+0000` - when updated
+    + type (Organisation Type)
+    + phone - phone number
+    + website: `https://www.example.com` - organisation website
 
-### List all organisations [GET]
+
+### List all organisations [GET /organisations?all]
 
 Organisations are automatically filtered to the owner's access token. Administrators with the role *ACS* can request all organisations.
 
 + Request
 
+    + Parameters
+        + all = `false` (optional, boolean, `true`) ... If an administrator with the role *ACS* they can request all organisations and not just the ones they own.
     + Headers
 
             Authorization: Bearer {accessToken}
@@ -925,11 +908,16 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
 # Group Organisation Types
 
-## Organisation Types [/utilities/{locale}/organisation-types]
+## Organisation Type [/utilities/{locale}/organisation-types]
 
 Organisation Types are a utility resource for organisations, and are used to fetch the Organisation Type UUID when creating an organisation.
 
 Please note an Alpha administrator has to create organisation types in the base locale _en_ before any NAO can create an organisation type in their own locale.
+
++ Attributes
+    + UUID: home - organisation type ID
+    + label: Home - translated label for the organisation type
+
 
 + Parameters
     + locale (required, string, `en`) ... Locale of organisation types to list
@@ -1040,3 +1028,13 @@ You only need to supply the parameters you want to change, otherwise it will kee
     + Headers
 
             Accept: application/json
+            
+# Group Common Data
+Common data structures used in requests and responses are defined here. This section
+will be migrated to **Data Structures** when a bug relating to definition of types is fixed.
+## Pager [/fake1]
+Pagination data in lists
++ Attributes (object)
+    + totalItems: 2 (number) - total number of items
+    + totalPages: 2 (number) - total number of pages
+    + currentPage: 1 (number) - current page number            
