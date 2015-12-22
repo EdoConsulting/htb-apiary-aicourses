@@ -580,7 +580,7 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
 # Group Sessions
 
-## Reschedule a course [/course/{courseId}/reschedule]
+## Reschedule a course [/courses/{courseId}/reschedule]
 
 Reschedules all of a courses sessions to a new start datetime.
 
@@ -597,22 +597,17 @@ Reschedules all of a courses sessions to a new start datetime.
 
             Authorization: Bearer {accessToken}
 
-    + Body
-
-            {"start":"2016-01-01T19:00:00+0000","timezone":"Europe/London"}
+    + Attributes
+        start: `2016-01-01T19:00:00+0000` - new start time
+        timezone: Europe/London - timezone to use
 
 
 + Response 200 (application/json)
 
-    + Headers
 
-            Accept: application/json
+    + Attributes (Course)
 
-    + Body
-
-            {"course":{"packages":[42,2],"id":13,"name":"My Course","contact":"Jordan de Laune","email":"jordan@cultivate4.com","type":"Alpha","resources":"book,video","start":"2016-01-01T19:00:00+0000","finish":"2016-03-04T19:00:00+0000","published":true,"approved":true,"sessions":[{"title":"Preparation","start":"2015-12-18T19:00:00+0000","type":"preparation","hash":null,"UUID":"P01"},{"title":"Training","start":"2015-12-25T19:00:00+0000","type":"training","hash":null,"UUID":"T01"},{"title":"Training","start":"2016-02-04T19:00:00+0000","type":"training","hash":null,"UUID":"T02"},{"title":"Life: Is This It?","start":"2016-01-01T19:00:00+0000","type":"standard","hash":null,"UUID":"S01"},{"title":"Jesus: Who is He?","start":"2016-01-01T19:00:00+0000","type":"standard","hash":null,"UUID":"S02"},{"title":"Cross: Why Did Jesus Die?","start":"2016-01-08T19:00:00+0000","type":"standard","hash":null,"UUID":"S03"},{"title":"Faith: How Can We have Faith?","start":"2016-01-15T19:00:00+0000","type":"standard","hash":null,"UUID":"S04"},{"title":"Prayer: Why and How Do I Pray?","start":"2016-01-22T19:00:00+0000","type":"standard","hash":null,"UUID":"S05"},{"title":"Bible: Why and How Do I Read the Bible?","start":"2016-01-29T19:00:00+0000","type":"standard","hash":null,"UUID":"S06"},{"title":"Follow: How Does God Guide Us Into Full Life?","start":"2016-02-05T19:00:00+0000","type":"standard","hash":null,"UUID":"S07"},{"title":"Evil: How Can I Resist Evil?","start":"2016-02-12T19:00:00+0000","type":"standard","hash":null,"UUID":"S09"},{"title":"Healing: Does God Heal Today?","start":"2016-02-19T19:00:00+0000","type":"standard","hash":null,"UUID":"S10"},{"title":"Church: What About the Church and Telling Others?","start":"2016-02-26T19:00:00+0000","type":"standard","hash":null,"UUID":"S17"},{"title":"After Alpha","start":"2016-03-04T19:00:00+0000","type":"after","hash":null,"UUID":"A01"}],"ownerId":1,"locale":"en_GB","length":10,"presentationStyle":"mixed","contexts":["standard","catholic"],"source":"AB","organisation":{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}},"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"},"language":{"ISO":"en","label":"English"},"denomination":{"UUID":"anglican","label":"Anglican"},"timezone":"Europe/London"}}
-
-## Update sessions [/course/{courseId}/session]
+## Update sessions [/course/{courseId}/sessions]
 
 Mass update sessions of a course.
 
@@ -627,21 +622,14 @@ Mass update sessions of a course.
 
             Authorization: Bearer {accessToken}
 
-    + Body
-
-            {"sessions":[{"UUID":"S01","start":"2017-01-01T00:00:00+0000"},{"UUID":"P01","start":"2018-01-01T00:00:00+0000"}],"timezone":"Europe/London"}
+    + Attributes
+        + sessions (array)
+            + (Session update)
 
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"course":{"packages":[42,2],"id":13,"name":"My Course","contact":"Jordan de Laune","email":"jordan@cultivate4.com","type":"Alpha","resources":"book,video","start":"2016-01-01T19:00:00+0000","finish":"2016-03-04T19:00:00+0000","published":true,"approved":true,"sessions":[{"title":"Preparation","start":"2018-01-01T00:00:00+0000","type":"preparation","hash":null,"UUID":"P01"},{"title":"Training","start":"2015-12-25T19:00:00+0000","type":"training","hash":null,"UUID":"T01"},{"title":"Training","start":"2016-02-04T19:00:00+0000","type":"training","hash":null,"UUID":"T02"},{"title":"Life: Is This It?","start":"2017-01-01T00:00:00+0000","type":"standard","hash":null,"UUID":"S01"},{"title":"Jesus: Who is He?","start":"2016-01-01T19:00:00+0000","type":"standard","hash":null,"UUID":"S02"},{"title":"Cross: Why Did Jesus Die?","start":"2016-01-08T19:00:00+0000","type":"standard","hash":null,"UUID":"S03"},{"title":"Faith: How Can We have Faith?","start":"2016-01-15T19:00:00+0000","type":"standard","hash":null,"UUID":"S04"},{"title":"Prayer: Why and How Do I Pray?","start":"2016-01-22T19:00:00+0000","type":"standard","hash":null,"UUID":"S05"},{"title":"Bible: Why and How Do I Read the Bible?","start":"2016-01-29T19:00:00+0000","type":"standard","hash":null,"UUID":"S06"},{"title":"Follow: How Does God Guide Us Into Full Life?","start":"2016-02-05T19:00:00+0000","type":"standard","hash":null,"UUID":"S07"},{"title":"Evil: How Can I Resist Evil?","start":"2016-02-12T19:00:00+0000","type":"standard","hash":null,"UUID":"S09"},{"title":"Healing: Does God Heal Today?","start":"2016-02-19T19:00:00+0000","type":"standard","hash":null,"UUID":"S10"},{"title":"Church: What About the Church and Telling Others?","start":"2016-02-26T19:00:00+0000","type":"standard","hash":null,"UUID":"S17"},{"title":"After Alpha","start":"2016-03-04T19:00:00+0000","type":"after","hash":null,"UUID":"A01"}],"ownerId":1,"locale":"en_GB","length":10,"presentationStyle":"mixed","contexts":["standard","catholic"],"source":"AB","organisation":{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}},"venue":{"id":7,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:16:23+0000","updated":"2015-03-06T12:16:23+0000"},"language":{"ISO":"en","label":"English"},"denomination":{"UUID":"anglican","label":"Anglican"},"timezone":"Europe/London"}}
-
+    + Attributes (Course)
 
 # Group Denominations
 
@@ -1011,4 +999,10 @@ Pagination data in lists
 + Attributes (object)
     + totalItems: 2 (number) - total number of items
     + totalPages: 2 (number) - total number of pages
-    + currentPage: 1 (number) - current page number            
+    + currentPage: 1 (number) - current page number
+
+## Session update [/fake2]
+Session data
++ Attributes
+    + UUID: S01 - session ID
+    + start: `2015-04-26T18:00:00+0000` - start time
