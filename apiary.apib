@@ -906,6 +906,24 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
 + Response 204 (application/json)
 
+# Group Helper
+## Utility Data for User [/helper/all/{locale}]
+
+A utility method to get data for the current user.
+
++ Attributes
+    + denominations (array) - denominations
+        + (Denomination)
+    + languages (array) - languages
+        + (Language)
+    + organisationTypes (array) - organisation types
+        + (Organisation Type)
+    + organisations (array) - the user's organisations
+        + (Organisation)
+    + venues (array) - the user's venues
+        + (Venue)
+    + timezones
+
             
 # Group Common Data
 Common data structures used in requests and responses are defined here. This section
