@@ -830,7 +830,6 @@ Please note an Alpha administrator has to create organisation types in the base 
     + UUID: home - organisation type ID
     + label: Home - translated label for the organisation type
 
-
 + Parameters
     + locale (required, string, `en`) ... Locale of organisation types to list
 
@@ -844,14 +843,9 @@ Please note an Alpha administrator has to create organisation types in the base 
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"organisationTypes":[{"UUID":"workplace","label":"Workplace"}]}
-
+    + Attributes
+        + organisationTypes (array)
+            + (Organisation Type)
 
 ### Create a organisation type [POST]
 
@@ -861,20 +855,11 @@ Please note an Alpha administrator has to create organisation types in the base 
 
             Authorization: Bearer {accessToken}
 
-    + Body
-
-            {"UUID":"workplace","label":"Workplace"}
+    + Attributes (Organisation Type)
 
 + Response 201 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"type":{"UUID":"workplace","label":"Workplace"}}
-
+    + Attributes (Organisation Type)
 
 ## Organisation Type [/utilities/{locale}/organisation-types/{UUID}]
 
@@ -892,14 +877,7 @@ Please note an Alpha administrator has to create organisation types in the base 
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"type":{"UUID":"workplace","label":"Workplace"}}
-
+    + Attributes (Organisation Type)
 
 ### Update an organisation type [PUT]
 
@@ -911,20 +889,11 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
             Authorization: Bearer {accessToken}
 
-    + Body
-
-            {"type":{"label":"Workplace"}}
+    + Attributes (Organisation Type)
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"type":{"UUID":"workplace","label":"Workplace"}}
-
+    + Attributes (Organisation Type)
 
 ### Delete an organisation type [DELETE]
 
@@ -935,11 +904,8 @@ You only need to supply the parameters you want to change, otherwise it will kee
             Authorization: Bearer {accessToken}
 
 
-+ Response 204 (text/html; charset=UTF-8)
++ Response 204 (application/json)
 
-    + Headers
-
-            Accept: application/json
             
 # Group Common Data
 Common data structures used in requests and responses are defined here. This section
