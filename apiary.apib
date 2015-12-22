@@ -464,7 +464,7 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
 # Group Organisations
 
-## Organisation [/organisations?all]
+## Organisation [/organisations]
 
 Organisations which run Alpha.
 
@@ -512,8 +512,6 @@ Organisations are automatically filtered to the owner's access token. Administra
             {"organisations":[{"id":10,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:26:59+0000","updated":"2015-03-06T12:26:59+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}}],"pager":{"totalItems":1,"totalPages":1,"currentPage":1}}
 
 
-## Organisations [/organisations]
-
 ### Create an organisation [POST]
 
 If you don't supply a `latitude` and `longitude` then we will try and geo-encode values using the address supplied.
@@ -524,29 +522,19 @@ If you don't supply a `latitude` and `longitude` then we will try and geo-encode
 
             Authorization: Bearer {accessToken}
 
-    + Body
+    + Attributes (Organisation)
 
-            {"addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","country":"GB","county":"Greater London","latitude":1.1012,"locale":"en_GB","longitude":-1.10122,"name":"Alpha International","phone":"+44 182 3239 232","postcode":"SW7 1JA","type":"workplace","website":"http://www.alpha.org"}
 
 + Response 201 (application/json)
 
-    + Headers
+    + Attributes (Organisation)
 
-            Accept: application/json
-
-    + Body
-
-            {"organisation":{"id":11,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:28:02+0000","updated":"2015-03-06T12:28:02+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}}}
-
-
-## Organisation [/organisations/{id}]
-
-+ Parameters
-    + id (required, integer, `1`) ... Id of a venue to act upon
-
-### Read an organisation [GET]
+### Read an organisation [GET /organisations/{id}]
 
 + Request
+
+    + Parameters
+        + id (required, integer, `1`) ... Id of organisation to act upon
 
     + Headers
 
@@ -554,54 +542,40 @@ If you don't supply a `latitude` and `longitude` then we will try and geo-encode
 
 + Response 200 (application/json)
 
-    + Headers
+    + Attributes (Organisation)
 
-            Accept: application/json
-
-    + Body
-
-            {"organisation":{"id":11,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:28:02+0000","updated":"2015-03-06T12:28:02+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}}}
-
-
-### Update an organisation [PUT]
+### Update an organisation [PUT /organisations/{id}]
 
 You only need to supply the parameters you want to change, otherwise it will keep the current values.
 
 + Request
 
+    + Parameters
+        + id (required, integer, `1`) ... Id of organisation to act upon
+
     + Headers
 
             Authorization: Bearer {accessToken}
 
-    + Body
-
-            {"addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","country":"GB","county":"Greater London","latitude":1.1012,"locale":"en_GB","longitude":-1.10122,"name":"Alpha International","phone":"+44 182 3239 232","postcode":"SW7 1JA","type":"workplace","website":"http://www.alpha.org"}
+    + Attributes (Organisation)
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"organisation":{"id":11,"name":"Alpha International","locale":"en_GB","addressLine1":"Old Brompton Road","addressLine2":"KnightsBridge","addressLine3":"South Kensington","city":"London","county":"Greater London","postcode":"SW7 1JA","country":"GB","latitude":1.1012,"longitude":-1.10122,"ownerId":1,"created":"2015-03-06T12:28:02+0000","updated":"2015-03-06T12:29:23+0000","phone":"+44 182 3239 232","website":"http:\/\/www.alpha.org","type":{"UUID":"workplace","label":"Workplace"}}}
+    + Attributes (Organisation)
 
 
-### Delete an organisation [DELETE]
+### Delete an organisation [DELETE /organisations/{id}]
 
 + Request
+    + Parameters
+        + id (required, integer, `1`) ... Id of organisation to act upon
 
     + Headers
 
             Authorization: Bearer {accessToken}
 
 
-+ Response 204 (text/html; charset=UTF-8)
-
-    + Headers
-
-            Accept: application/json
++ Response 204 (application/json)
 
 
 # Group Sessions
