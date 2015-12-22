@@ -633,14 +633,18 @@ Mass update sessions of a course.
 
 # Group Denominations
 
-## Denominations [/utilities/{locale}/denominations]
+## Denomination [/utilities/{locale}/denominations]
 
 Denominations are a utility resource for courses, and are used to fetch the Denomination UUID when creating a course.
 
 Please note an Alpha administrator has to create denominations in the base locale _en_ before any NAO can create a denomination in their own locale.
 
++ Attributes
+    + UUID: anglican - ID for denomination
+    + label: Anglicano - translated label for denomination
+
 + Parameters
-    + locale (required, string, `en`) ... Locale of denominations to list
+    + locale (required, string, `es`) ... Locale of denominations to list
 
 ### List all denominations for a locale [GET]
 
@@ -652,14 +656,9 @@ Please note an Alpha administrator has to create denominations in the base local
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"denominations":[{"UUID":"anglican","label":"Anglican"}]}
-
+    + Attributes
+        + denominations (array)
+            + (Denomination)
 
 ### Create a denomination [POST]
 
@@ -669,20 +668,12 @@ Please note an Alpha administrator has to create denominations in the base local
 
             Authorization: Bearer {accessToken}
 
-    + Body
+    + Attributes (Denomination)
 
-            {"UUID":"anglican","label":"Anglican"}
 
 + Response 201 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"denomination":{"UUID":"anglican","locale":"en_GB","label":"Anglican"}}
-
+    + Attributes (Denomination)
 
 ## Denomination [/utilities/{locale}/denominations/{UUID}]
 
@@ -700,14 +691,7 @@ Please note an Alpha administrator has to create denominations in the base local
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"denomination":{"UUID":"anglican","locale":"en_GB","label":"Anglican"}}
-
+    + Attributes (Denomination)
 
 ### Update a denomination [PUT]
 
@@ -719,19 +703,11 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
             Authorization: Bearer {accessToken}
 
-    + Body
-
-            {"label":"Anglican"}
+    + Attributes (Denomination)
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"denomination":{"UUID":"anglican","locale":"en_GB","label":"Anglicans"}}
+    + Attributes (Denomination)
 
 
 ### Delete a denomination [DELETE]
@@ -743,22 +719,23 @@ You only need to supply the parameters you want to change, otherwise it will kee
             Authorization: Bearer {accessToken}
 
 
-+ Response 204 (text/html; charset=UTF-8)
++ Response 204 (application/json)
 
-    + Headers
-
-            Accept: application/json
 
 # Group Languages
 
-## Languages [/utilities/{locale}/languages]
+## Language [/utilities/{locale}/languages]
 
 Languages are a utility resource for courses, and are used to fetch the language ISO when creating a course.
 
 Please note an Alpha administrator has to create languages in the base locale _en_ before any NAO can create a language in their own locale.
 
 + Parameters
-    + locale (required, string, `en`) ... Locale of languages to list
+    + locale (required, string, `de`) ... Locale of languages to list
+    
++ Attributes
+    ISO: en - ISO code for the language
+    label: Englisch - translated name of language
 
 ### List all languages for a locale [GET]
 
@@ -774,10 +751,9 @@ Please note an Alpha administrator has to create languages in the base locale _e
 
             Accept: application/json
 
-    + Body
-
-            {"languages":[{"ISO":"en","label":"English"},{"ISO":"fr","label":"French"}]}
-
+    + Attributes
+        + languages (array)
+            + (Language)
 
 ### Create a language [POST]
 
@@ -787,19 +763,11 @@ Please note an Alpha administrator has to create languages in the base locale _e
 
             Authorization: Bearer {accessToken}
 
-    + Body
-
-            {"ISO":"en","label":"English"}
+    + Attributes (Language)
 
 + Response 201 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"language":{"ISO":"en","label":"English"}}
+    + Attributes (Language)
 
 
 ## Language [/utilities/{locale}/languages/{ISO}]
@@ -819,14 +787,7 @@ Please note an Alpha administrator has to create languages in the base locale _e
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"language":{"ISO":"en","label":"English"}}
-
+    + Attributes (Language)
 
 ### Update a language [PUT]
 
@@ -838,19 +799,11 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
             Authorization: Bearer {accessToken}
 
-    + Body
-
-            {"label":"English"}
+    + Attributes (Language)
 
 + Response 200 (application/json)
 
-    + Headers
-
-            Accept: application/json
-
-    + Body
-
-            {"language":{"ISO":"en","label":"English"}}
+    + Attributes (Language)
 
 
 ### Delete a language [DELETE]
@@ -862,11 +815,8 @@ You only need to supply the parameters you want to change, otherwise it will kee
             Authorization: Bearer {accessToken}
 
 
-+ Response 204 (text/html; charset=UTF-8)
++ Response 204 (application/json)
 
-    + Headers
-
-            Accept: application/json
 
 # Group Organisation Types
 
