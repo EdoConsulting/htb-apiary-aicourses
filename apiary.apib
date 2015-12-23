@@ -287,6 +287,21 @@ Wipe and replace all packages for a course.
         + packages (array)
             + (number) - packageId
 
+### Get course by username [GET /courses/fetch/{username}]
+
+Return the latest course for a user.
+
++ Request (application/json)
+    + Parameters
+        + username {required, string, `name@example.org`} ... user who created course
+    + Headers
+
+            Authorization: Bearer {accessToken}
+
++ Response (application/json)
+    + Attributes (Course)
+    
+
 ## Invite Email Copy [/courses/{id}/invite-email-copy]
 
 Get text for an email to invite the course contact to host a session.
