@@ -84,69 +84,8 @@ Fetch a list of timezones for a country
 
 + Response 200 (application/json)
 
-    + Body
-    
-            {
-              "timezones": {
-                "Africa": {
-                  "Africa\/Abidjan": "Abidjan",
-                  "Africa\/Accra": "Accra"
-                },
-                "America": {
-                  "America\/Adak": "Adak",
-                  "America\/Anchorage": "Anchorage",
-                  "America\/Yellowknife": "Yellowknife"
-                },
-                "Antarctica": {
-                  "Antarctica\/Casey": "Casey",
-                  "Antarctica\/Davis": "Davis",
-                  "Antarctica\/DumontDUrville": "DumontDUrville",
-                  "Antarctica\/Vostok": "Vostok"
-                },
-                "Arctic": {
-                  "Arctic\/Longyearbyen": "Longyearbyen"
-                },
-                "Asia": {
-                  "Asia\/Aden": "Aden",
-                  "Asia\/Almaty": "Almaty",
-                  "Asia\/Amman": "Amman",
-                  "Asia\/Anadyr": "Anadyr",
-                  "Asia\/Aqtau": "Aqtau",
-                  "Asia\/Yerevan": "Yerevan"
-                },
-                "Atlantic": {
-                  "Atlantic\/Azores": "Azores",
-                  "Atlantic\/Bermuda": "Bermuda",
-                  "Atlantic\/Canary": "Canary",
-                  "Atlantic\/Stanley": "Stanley"
-                },
-                "Australia": {
-                  "Australia\/Adelaide": "Adelaide",
-                  "Australia\/Brisbane": "Brisbane",
-                  "Australia\/Sydney": "Sydney"
-                },
-                "Europe": {
-                  "Europe\/Amsterdam": "Amsterdam",
-                  "Europe\/Andorra": "Andorra",
-                  "Europe\/Athens": "Athens",
-                  "Europe\/Zurich": "Zurich"
-                },
-                "Indian": {
-                  "Indian\/Antananarivo": "Antananarivo",
-                  "Indian\/Reunion": "Reunion"
-                },
-                "Pacific": {
-                  "Pacific\/Apia": "Apia",
-                  "Pacific\/Auckland": "Auckland",
-                  "Pacific\/Tongatapu": "Tongatapu",
-                  "Pacific\/Wake": "Wake",
-                  "Pacific\/Wallis": "Wallis"
-                },
-                "Other": {
-                  "UTC": "UTC"
-                }
-              }
-            }
+    + Attributes
+        + timezones (Timezones array)
 
 ## All [/public/utilities/{locale}/all]
 
@@ -159,7 +98,7 @@ Combined list of public data for a locale
         + (Languages list)
     + organisationTypes (array) - list of organisation types
         + (Organisation Type)
-    + timezones (object) - list of timezones
+    + timezones (Timezones array) - list of timezones
 
 ### Publicly list all data for a locale [GET]
 
@@ -922,7 +861,7 @@ A utility method to get data for the current user.
         + (Organisation)
     + venues (array) - the user's venues
         + (Venue)
-    + timezones
+    + timezones (Timezones array)
 
             
 # Group Common Data
@@ -940,3 +879,52 @@ Session data
 + Attributes
     + UUID: S01 - session ID
     + start: `2015-04-26T18:00:00+0000` - start time
+
+## Timezones array [/fake3]
+This is a sample subset of timezone data for testing purposes.
+    + Africa    (object)
+        + Africa/Abidjan    :     Abidjan
+        + Africa/Accra    :     Accra
+    + America    (object)
+        + America/Adak    :     Adak
+        + America/Anchorage    :     Anchorage
+        + America/Yellowknife    :     Yellowknife
+    + Antarctica    (object)
+        + Antarctica/Casey    :     Casey
+        + Antarctica/Davis    :     Davis
+        + Antarctica/DumontDUrville    :     DumontDUrville
+        + Antarctica/Vostok    :     Vostok
+    + Arctic    (object)
+        + Arctic/Longyearbyen    :     Longyearbyen
+    + Asia    (object)
+        + Asia/Aden    :     Aden
+        + Asia/Almaty    :     Almaty
+        + Asia/Amman    :     Amman
+        + Asia/Anadyr    :     Anadyr
+        + Asia/Aqtau    :     Aqtau
+        + Asia/Yerevan    :     Yerevan
+    + Atlantic    (object)
+        + Atlantic/Azores    :     Azores
+        + Atlantic/Bermuda    :     Bermuda
+        + Atlantic/Canary    :     Canary
+        + Atlantic/Stanley    :     Stanley
+    + Australia    (object)
+        + Australia/Adelaide    :     Adelaide
+        + Australia/Brisbane    :     Brisbane
+        + Australia/Sydney    :     Sydney
+    + Europe    (object)
+        + Europe/Amsterdam    :     Amsterdam
+        + Europe/Andorra    :     Andorra
+        + Europe/Athens    :     Athens
+        + Europe/Zurich    :     Zurich
+    + Indian    (object)
+        + Indian/Antananarivo    :     Antananarivo
+        + Indian/Reunion    :     Reunion
+    + Pacific    (object)
+        + Pacific/Apia    :     Apia
+        + Pacific/Auckland    :     Auckland
+        + Pacific/Tongatapu    :     Tongatapu
+        + Pacific/Wake    :     Wake
+        + Pacific/Wallis    :     Wallis
+    + Other    (object)
+        + UTC    :     UTC
