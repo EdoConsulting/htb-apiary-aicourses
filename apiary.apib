@@ -879,7 +879,55 @@ A utility method to get data for the current user.
         + (Venue)
     + timezones (Timezones array)
 
-            
+# Group Bulk Upload
+## Bulk Upload [/bulkupload]
+
+Upload courses data in the form of a spreadsheet (CSV or Excel format). The first row of the spreadsheet should contain
+column headers identifying the data in subsequent rows. Not all columns 
+
+* `First name` - first name of course contact
+* `Surname` - surname of course contact
+* `Email` - email of course contact
+* `Phone` - phone number
+* `Alpha name` - name of course
+* `Alpha Type` - type of course
+* `Denomination` - denomination ID
+* `Start Date (YYYY-MM-DD)` - start date
+* `Start Time (HH:MM)` - start time
+* `Language` - language code
+* `Materials` - comma-separated list of materials **LOOKS LIKE THIS IS NOT USED IN V3**
+* `Published (yes/no)` - published?
+* `Country` - course country code
+* `Organisation name` - name of organisation
+* `Organisation type` - type of organisation
+* `Organisation website (optional)` - website URL
+* `Organisation address line 1` - address line 1
+* `Organisation address line 2 (optional)` - address line 2
+* `Organisation city/town` - city/town
+* `Organisation Country` - country code 
+* `Organisation County` - county/state
+* `Organisation postcode (optional)` - postcode/zip
+* `Org Same as Venue (yes/no)` - is the organisation same as the venue? (if so venue data will be ignored)
+* `Venue name` - name of venue
+* `Venue address line 1` - first line of address
+* `Venue address line 2 (optional)` - second line of address
+* `Venue city/town` - city/town
+* `Venue Country` - country code
+* `Venue County` - county/state
+* `Venue postcode (optional)` - postcode/zip
+
+
+### Upload request [POST]
+
++ Request (multipart/form-data)
+
+    + Headers
+
+            Authorization: Bearer {accessToken}
+
+ 
+
+
 # Group Common Data
 Common data structures used in requests and responses are defined here. This section
 will be migrated to **Data Structures** when a bug relating to definition of types is fixed.
