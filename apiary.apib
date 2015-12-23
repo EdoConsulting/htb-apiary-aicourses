@@ -431,6 +431,19 @@ You only need to supply the parameters you want to change, otherwise it will kee
 
 + Response 204 (application/json)
 
+### Search venues [GET /venue/search
+
+Return a list of venues for the current user, most recently updated first.
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {accessToken}
+
++ Response 200 (application/json)
+
+    + Attributes (array [Venue])
 
 # Group Organisations
 
