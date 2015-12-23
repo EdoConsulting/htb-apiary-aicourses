@@ -270,6 +270,22 @@ This will add a completed task to a course, rather than the update which would r
 + Response 200 (application/json)
 
     + Attributes (Course)
+    
+### Update packages [PUT /courses/{id}/packages]
+
+Wipe and replace all packages for a course.
+
++ Request
+    + Parameters
+        + id (required, integer, `1`) ... Id of a course to act upon
+
+    + Headers
+
+            Authorization: Bearer {accessToken}
+
+    + Attributes
+        + packages (array)
+            + (number) - packageId
 
 ## Invite Email Copy [/courses/{id}/invite-email-copy]
 
