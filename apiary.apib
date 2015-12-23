@@ -940,8 +940,49 @@ column headers identifying the data in subsequent rows. Not all columns
 
             Authorization: Bearer {accessToken}
 
- 
+# Group Notifications
 
+## Notification [/notification/{email}]
+
++ Properties
+    + email (required, string, `sample@example.org`) ... Email address
+
++ Attributes
+    + id: 12345 (number) - notification ID
+    + email: `sample@sample.com` - email address
+    + subscribed: false (boolean) - is the address subscribed to notifications?
+    + publishedOnly: true (boolean) - notify about published courses only?
+    + countries: GB, DE (array[string]) - countries to get notifications for
+    + date_format: d/m/Y - date format
+    + created: `2015-12-17T11:33:04+0000` - datetime when created
+    + updated: `2015-12-17T11:33:04+0000` - datetime when updated
+    + deleted: false (boolean)
+
+### Get notification [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer {accessToken}
+
++ Response (application/json)
+
+    + Attributes (application/json)
+
+### Upsert notification [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer {accessToken}
+
+    + Attributes (application/json)
+
++ Response (application/json)
+
+    + Attributes (application/json)
 
 # Group Common Data
 Common data structures used in requests and responses are defined here. This section
