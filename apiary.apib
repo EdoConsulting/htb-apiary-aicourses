@@ -115,7 +115,7 @@ List all values for source.
 
 ### Get list of sources [GET]
 
-+ Response (application/json)
++ Response 200 (application/json)
 
     + Attributes
         + sources: alphabuilder, courses3 (array [string])
@@ -298,6 +298,10 @@ Wipe and replace all packages for a course.
         + packages (array)
             + (number) - packageId
 
++ Response 200 (application/json)
+
+    + Attributes (Course)
+    
 ### Get course by username [GET /courses/fetch/{username}]
 
 Return the latest course for a user.
@@ -309,7 +313,7 @@ Return the latest course for a user.
 
             Authorization: Bearer {accessToken}
 
-+ Response (application/json)
++ Response 200 (application/json)
     + Attributes (Course)
     
 
